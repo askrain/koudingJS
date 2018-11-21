@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>location对象</title>
+    <script>
+        /*location 即是window对象的属性也是document对象的属性*/
+        // alert(location);//输出当前地址栏中的内容
+        //hash  存在的话，表示锚点部分 url+"#23"  指代23
+    //    host  主机名：端口号
+    //    hostname 主机名
+    //    href 整个url
+    //    pathname 路径名
+    //    port 端口号
+    //     protocol 协议部分
+    //     search  查询字符串  得到？号后面的字符串 //?name=lis&age=12
+    //    对应的方法 assign()  跳转到指定页面与href等效   reload（）  重载当前url   replace（）  用新的url替换当前页面
+    //     alert(location.protocol);
+
+
+        //截取问号后边的字符串  ?name=lisei&age=29
+        function getSearch() {
+            var args=[];
+            var str=location.search.length>0?location.search.subString(1):"";//name=lisei&age=29
+            var strs=str.split('&');
+            var item=null,m=null,v=null;
+            for (var i = 0; i < strs.length; i++) {
+                item = strs[i].split("=");
+                m = item[0];
+                n = item[1];
+                args[m]=n;
+            }
+            return args;
+        }
+        function changeUrl() {
+            // location.href="Demo.html";
+            location.assign("Demo.html");//这两个可以后退
+
+            location.reload("Demo.html");//这个不能后退，不能生成历史记录
+            location.reload();//从新加载当前页面（可能从缓存中加载）
+            location.reload(true);//从页面所在的服务器重新加载
+        }
+
+
+    //    如何改变地址栏中的地址
+    </script>
+</head>
+<body>
+    <a href="javascript:changeUrl()" >点击</a>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一致性检测</title>
+    <script>
+        /**
+         * DOM一致性检测：由于DOM分为多个级别，也包含多个部分，因此检测浏览器实现了DOM的哪些部分就十分必要。DOM1级实现了最基本的文档处理，DOM2和DOM3在这个基础上增加了更多的交互能力
+         *
+         * CSS作为HTML的辅助，可以增强页面的显示效果。但不是每个浏览器都能支持最新的CSS能力。CSS的能力和DOM级别密切相关，所以我们有必要检测当前浏览器支持CSS能力的级别。
+         * DOM2增加了CSS编程访问方式和改变CSS样式信息
+         */
+        alert(document.implementation.hasFeature("CSS","2.0"));//表示是否支持CSS的2.0版本
+        alert(document.implementation.hasFeature("CSS2","2.0"));
+
+    //     但这个方法不支持对IE浏览器功能的检测
+    </script>
+</head>
+<body>
+
+</body>
+</html>

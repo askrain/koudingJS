@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本框的使用</title>
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script>
+        //select事件
+       /* addEvent(window,"load",function () {
+           var fm=document.getElementById("myForm");
+           var text=fm.elements["user"];
+           addEvent(text, "select",function () {
+               // alert("select....."+text.value);//选中文本 释放鼠标后触发事件  ie低版本只要选择了文本就触发事件
+               //显示选中的文本  ie的低版本（8和以下）不支持该方法
+               // this.selectionStart  this.selectionEnd
+               alert("你选中了"+this.value.substring(this.selectionStart,this.selectionEnd));
+
+           //    解决方案  ie低版本得到选中的文本
+               var selectText = document.selection.createRange().text;
+
+           })
+        });*/
+
+    //    跨浏览器获取被选中的文本
+        function getSelectText(text) {
+            if (typeof text.selectionStart=="number"){
+                return text.value.substring(text.selectionStart,text.selectionEnd);
+            } else if (document.selection) {
+                return  document.selection.createRange().text;
+            }
+        }
+
+        addEvent(window,"load",function () {
+            var fm=document.getElementById("myForm");
+            var text=fm.elements["user"];
+            var result=getSelectText(text);
+            document.getElementById("pid").innerHTML=result;
+        })
+
+    </script>
+</head>
+<body>
+    <p id="pid"></p>
+    <form id="myForm">
+        姓名<input type="text" name="user" value="请输入姓名"><br/>
+        <textarea name="content">大家好！</textarea>
+    </form>
+</body>
+</html>

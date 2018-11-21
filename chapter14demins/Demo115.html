@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素周边大小</title>
+    <style>
+
+
+        #div1{
+            width: 400px;
+            height: 400px;
+            background: red;
+            overflow: scroll;
+
+        }
+    </style>
+    <script>
+        //scrollTop和scrollLeft  可以获取滚动条被隐藏的区域大小  也可以设置定位到该区域
+        window.onload=function () {
+            var div=document.getElementById("div1");
+            // alert(div.scrollTop);//因为还没有滚动  此时为0
+                div.scrollTop=50;//设置滚动条所在的位置
+            alert(div.scrollTop);
+
+        //    刷新时，让那个滚动条回到最顶部
+            function getTop(element) {
+                if (element.scrollTop!=0){
+                    element.scrollTop=0;
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1">JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊JS学习撒睡觉啊</div>
+
+</body>
+</html>

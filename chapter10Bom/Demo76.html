@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新建窗口的方法</title>
+    <script>
+        // open("http://www.baidu.com");//默认都在一个新的窗口打开页面
+        // open("http://www.baidu.com","baidu");//第二个参数给新打开的窗口命名
+        // open("http://www.163.com","baidu");//百度网页被网易覆盖
+        // open("http://www.163.com","_blank");//等价于第一种写法，在新窗口显示页面
+        // open("http://www.163.com","_parent");//在当前窗口显示 不会新打开页面
+       /* var s=open("Demo.html");//在新打开的页面打开指定的页面  返回的是新窗口对象
+        // alert(typeof s);
+        s.alert("我的新窗口");*/
+       //第三个参数用来设置被打开窗口的属性  width=300,height=300,left=100,top=100,menubar=no,toolbar=yes
+        var s=open("Demo.html","","width=300,height=300,left=100,top=100,menubar=no,toolbar=yes");
+    //    常用的属性设置  location yes or no 是否在浏览器中显示地址栏
+    //    menubar  yes or no（默认）是否显示菜单栏
+    //    resizable  是否可以通过拖动浏览器窗口的边框改变大小  默认no
+    //    scrollbars 如果内容显示不下，是否显示滚动  默认no
+    //    statusbars 是否显示状态栏 默认no
+    //    toolbar 是否显示工具栏  默认no
+    </script>
+</head>
+<body>
+
+</body>
+</html>

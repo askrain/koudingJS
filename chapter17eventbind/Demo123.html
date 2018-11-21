@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .red {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .blue{
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+
+    </style>
+    <script>
+        /*传统事件绑定
+        * 1.内联模式：html和js代码混合在一起
+        * 2.脚本模式：覆盖问题*/
+       /* window.onload=function () {
+            alert("hello");
+        }
+        // alert(typeof window.onload);//function
+        if (typeof window.onload=="function"){
+            var ref=null;
+            ref = window.onload;
+        }
+        window.onload=function () {
+            // alert("world");//覆盖了第一个window.onload事件
+            if (ref){  //首先因为覆盖的原因，会执行这个window.onload的函数
+                ref();
+            }
+            alert("world");
+        }*/
+
+        //根据新的解决方案函数 来重构下面的函数：
+        addEvent(window,"load",function () {
+            var div=document.getElementById("div1");
+            addEvent(div, "click",toBlue);
+        });
+
+    //    事件切换中  点击鼠标的时候 两种格式可以相互转换
+/*        window.onload=function () {
+            var div=document.getElementById("div1");
+            /!*div.onclick=function () {
+                div.className="blue";
+            }*!/
+            div.onclick=function(){
+                alert("hello");
+                // toBlue();  这个会出现不能切换的问题
+                toBlue.call(this);//这个this指向了div 解决了下面描述的问题  这样又形成了一个新的问题  这个onClick时间又被覆盖了 hello不能显示
+            }
+            div.onclick=toBlue;//还是存在点击事件的覆盖问题  解决方案也是把这句移动到｛｝中，但由于this的指向问题变成了window 就不能实现事件的切换了
+        }
+        function toRed() {
+            this.className="red";
+            this.onclick=toBlue;
+        }
+        function toBlue() {
+            this.className="blue";
+            this.onclick=toRed;
+        }*/
+        // 新的解决方案  1.解决点击事件覆盖的问题 2.解决this引用的问题  3. 解决切换过程中时间被覆盖的问题
+        /**
+         *
+         * @param obj  被点击的对象
+         * @param evt  事件名称
+         * @param fn    对应事件的处理函数
+         */
+
+        // toMuchRecursion  多次连续调用 太多递归 因为添加了太多事件
+        //添加事件的功能  但有问题 要是连续添加两次完全一样的事件 这样就形成了重复  所以应该用遍历来实现重复时间的矫正
+        function addEvent(obj,evt,fn) {
+            var ref=null;
+            if (typeof obj["on"+evt] =="function"){  //解决了覆盖的问题
+                ref = obj["on"+evt];
+            }
+            obj["on"+evt]=function () {
+                if (ref){
+                    ref();
+                }
+                fn.call(this);  //解决了this的指向问题
+            }
+        }
+       // 移除事件的功能  用法是在每次addEvent的时候调用  但这个方法会移除obj上面的所有点击事件
+        function removeEvent(obj,evt) {
+            if (obj["on"+evt]){
+                obj["on"+evt]=null;
+            }
+        }
+        //移除制定对象指定事件的制定函数  要遍历
+        function removeEvent(obj,evt,fn) {
+            if (obj["on"+evt]){
+                obj["on"+evt]=null;
+            }
+        }
+
+       /* addEvent(window,"load",function () {  //注意事件的拼接｛已经存在了on｝
+            alert("hello");
+        });
+        addEvent(window,"load",function () {
+            alert("world");
+        })*/
+    </script>
+</head>
+<body>
+<div id="div1" class="red">javascript学习</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 计算后的样式</title>
+    <style type="text/css">
+        #div1{
+            color: brown;
+            font-size: 65px;
+            border: 1px solid blue;//内联样式的复合属性不能获取到
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var div=document.getElementById("div1");
+            alert(window.getComputedStyle(div,null));//兼容问题[object CSSStyleDeclaration]
+            alert(window.getComputedStyle);//function.......
+            var style=window.getComputedStyle?window.getComputedStyle(div,null):null||div.currentStyle;//伪类  设置的样式使用的是设置的，没有设置的样式是默认值  存在兼容问题 ie8  及以下版本不支持该函数 div.currentStyle替代
+            /*alert(style.color);//rgb(255, 0, 0)
+            alert(style.fontSize);//20px
+            alert(style.width);//1350px 使用默认值*/
+            alert(style.border);
+
+        //    为什么能获取到各种样式？一直驻留在浏览器中，随时可以获取到。
+        //    计算后的样式，也可以获取内联样式和链接样式
+        }
+    </script>
+</head>
+<body>
+    <!--<div id="div1" style="color:red;background:#ccc;font-size: 20px">JavaScript学习</div>-->
+    <div id="div1">JavaScript学习</div>
+</body>
+</html>

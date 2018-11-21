@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for 循环</title>
+</head>
+<script type="text/javascript">
+    /*
+    for循环 格式：
+    for(表达式1；表达式2；表达式3)
+    表达式1只执行一次
+    一般循环使用for循环比较多
+     */
+    /*var sum=0;
+    for (var i=1;i<=100;i++){
+        sum = sum+i;
+    }
+    alert(sum);*/
+//关于死循环
+    /*
+    1.while(true)
+    2.do{}while(true);
+    */
+
+    //循环嵌套  打印三角形
+
+
+    //第一层循环决定打印了几行
+   /* for (var i=0;i<5;i++){
+        for (var j = 0; j <= i; j++) {
+            document.write("O")
+        }
+        document.write("<br/>");//换行
+    }*/
+    for (var i=0;i<5;i++){
+        //每一行的空格，行数减去当前行的星数
+        for (var k = 0; k < 5 - i - 1; k++) {
+            document.write("￥");//空格代替
+        }
+        //每一行打印几个星。对应的行打印的星数是一致的
+        for (var j = 0; j <= i; j++) {
+            document.write("O")
+        }
+        document.write("<br/>");//换行
+    }
+
+
+
+
+</script>
+<body>
+
+</body>
+</html>

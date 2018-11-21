@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+    <script>
+        <!--键盘事件  keydown 任意键  keyup 任意键 keypress 字符键-->
+    //    键码：在发生keydown和keyup的时候，event对象的keyCode属性中会包含一个代码，与键盘上一个特定的键对应  对于数字字母字符集，keycode属性的值与ASCII码中对应小写字母或数字的编码相同，字母中大小写不影响
+
+        document.onkeydown=function (ev) {
+            var e=ev||window.event;
+            alert(e.keyCode);//这个没有兼容问题  不区分大小写
+        }
+        document.onkeypress=function (ev) {
+            var e=ev||window.event;
+            alert(e.keyCode);//火狐不兼容  谷歌和ie支持
+        }
+
+    //    字符编码：FireFox Chrome 和Safari的event对象都支持一个charCode属性，这个属性只有在发生onkeypress的时候才包含值 值代表摁下的那个键所代表字符的ASCII编码 此时的keyCode通常为0或者也可能等于锁按键的编码  IE8及以下版本和Opera低版本则是在keyCode中保存字符的ASCII编码
+        document.onkeypress=function (ev) {
+            var e=ev||window.event;// 首先针对字符键
+            var num=e.charCode; //typeof 的结果number
+        }
+
+        //跨浏览器的兼容下发
+        function getCharCode(evt) {
+            var e=evt||window.event;
+            if (typeof e.charCode){
+                return e.charCode;
+            } else{
+                return e.keyCode;
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

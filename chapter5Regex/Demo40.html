@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+</head>
+<script>
+    //验证qq号是否合法，5--15位，不能以0开头，全是数字
+    var qq="234556";
+    /*if (qq.length>=5&&qq.length<=15){
+        if (qq.charCodeAt(0) != 48) {
+            if (!isNaN(qq)) {
+                alert("qq号合法")
+            }else {
+                alert("含有非数字");
+            }
+        }else{
+            alert("以0开头不合法");
+        }
+    }else {
+        alert("长度不合法")
+    }*/
+
+//   定义一个验证qq号的表达式
+    var reg=/[1-9][0-9]{4,14}/;
+    var result = reg.test(qq);
+    alert(result?"qq合法":"qq不合法");
+</script>
+<body>
+
+</body>
+</html>

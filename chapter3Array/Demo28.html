@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本类型和引用类型的对比</title>
+</head>
+<script>
+    <!--对象:把数据和功能封装到一起-->
+    function change(a,b) {
+        var c=a;
+        a = b;
+        b = c;
+    }
+    var m=5,n=1;
+    change(m, n);
+    alert(m+"  "+n);
+
+    /*function change2(obj) {
+        var c=obj.a;
+        obj.a=obj.b;
+        obj.b=c;
+    }
+    var obj1={
+        a:5,
+        b:6
+    }
+    change2(obj1);
+    alert(obj1.a+"  "+obj1.b);*/
+</script>
+<body>
+
+</body>
+</html>

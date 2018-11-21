@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>break continue</title>
+</head>
+<body>
+<script>
+    <!--break 结束其所在的循环-->
+    /*for (var i = 0; i < 5; i++) {
+        if (i === 3)
+            break;
+        document.write(i);
+
+    }*/
+    /*for (var i = 0; i < 5; i++) {
+        for (var j = 0; j < 5; j++) {
+            if (j%2===0)
+                break;//结束的是内部循环
+        }
+        document.write(i);
+    }*/
+
+
+    //跳到外部循环
+    /*flag:
+    for (var i = 1; i <= 5; i++) {
+        for (var j = 1; j <=5; j++) {
+            if (j%2===0)
+                break flag;//结束的是外部循环
+        }
+        document.write(i);
+    }*/
+
+
+    //continue 结束的是本次循环，直接进入到下次循环
+    /*for (var i = 0; i < 5; i++) {
+        if (i === 3)
+            continue;//结束本次循环 直接进入下一次循环，也就是直接去执行i++
+        document.write(i);
+
+    }*/
+
+
+
+</script>
+</body>
+</html>

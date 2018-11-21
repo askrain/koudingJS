@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单处理</title>
+    <script>
+        function addEvent(obj,evt,fn) {
+            if (obj.addEventListener){
+                obj.addEventListener(evt,fn,false);
+            } else if (obj.attachEvent){
+                obj.attachEvent("on"+evt, fn);
+            }
+        }
+
+        function removeEvent(obj,evt,fn) {
+            if (obj.removeEventListener){
+                obj.removeEventListener(evt,fn, false);
+            } else if(obj.detachEvent){
+                obj.detachEvent("on"+evt, fn);
+            }
+        }
+
+        function preDef(evt) {
+            var e=evt||window.event;
+            if (e.preventDefault){//w3c
+                e.preventDefault();
+            } else{
+                e.returnValue=false;
+            }
+        }
+
+    //    提交数据最大的问题就是重复提交表单  因为各种原因  当一条数据提交到服务器的时候会出现延时等长时间没反应，导致用户不停的点击，从而使得重复提交了很多相同的请求，或造成错误，或写入数据库多条相同的数据
+
+        addEvent(window,"load",function (evt) {
+        //    网络延迟
+            var form=document.getElementById("myForm");
+            var submit = document.getElementById("sub");
+
+            addEvent(form, "submit",function (evt) {
+                preDef(evt);
+                submit.disabled=true;
+                setTimeout(function () {  //解决了延时提交的问题 但没有解决多次提交的问题
+                   form.submit();
+                },5000);
+            })
+        });
+
+    //    有两种方法可以解决多次提交的问题  1.提交之后，禁用提交按钮(不能解决按键提交的方式)  2.提交之后取消后续的表单提交操作
+        addEvent(window,"load",function (evt) {
+            var form=document.getElementById("myForm");
+            var submit = document.getElementById("sub");
+            var flag=false;
+            addEvent(form, "submit",function (evt) {
+                preDef(evt);
+                submit.disabled=true;
+                if (flag==true) return;
+                flag=true;
+                setTimeout(function () {  //解决了延时提交的问题 但没有解决多次提交的问题
+                    form.submit();
+                },5000);
+            })
+        });
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <form id="myForm">
+        姓名：<input type="text" name="user"/><br/>
+        <input id="sub" type="submit" value="提交">
+    </form>
+
+</body>
+</html>

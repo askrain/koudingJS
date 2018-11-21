@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点操作方式</title>
+    <script>
+        /*
+        createElement()  创建一个元素节点
+        appendChild()  将新节点追加到子节点列表的末尾
+        createTextNode() 创建一个文本节点
+        insertBefore() 将新节点插入到前面
+        replaceChild()  将新节点替换旧节点
+        cloneNode()赋值节点
+        removeNode()  移除节点
+         */
+        function getNodes(nodes){
+            for (var i = 0; i < nodes.childNodes.length; i++) {
+                if (nodes.childNodes[i].nodeType=3&&/^\s+$/.test(nodes.childNodes[i].nodeValue)){
+                    //    删除改空白文本节点，根据父节点来删除
+                    nodes.childNodes[i].parentNode.removeChild(nodes.childNodes[i]);
+                }
+            }
+            return nodes;
+        }
+
+        window.onload=function () {
+           /* var em=document.createElement("em");
+            var body=document.getElementsByTagName("body")[0];*/
+            var div = document.getElementById("div1");
+            // body.replaceChild(em, div);//newNode oldNode
+            var newP = getNodes(div).firstChild.cloneNode(false);//div的第一个子节点是空格 当为false的时候不复制标签的文本节点
+            div.appendChild(newP);
+            div.removeChild(div.childNodes[1]);//同样要删除空白节点
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <p>html</p>
+        <p>css</p>
+        <p>js</p>
+    </div>
+
+</body>
+</html>

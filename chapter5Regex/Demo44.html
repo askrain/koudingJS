@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+    <script>
+        //使用exec()方法返回数组
+       /* var reg=/[a-z]+\s\d{4}/;//a-z出现1次或者多次 空格 4个数字
+        var str="hello 2018";
+        alert(reg.exec(str));//hello 2018*/
+
+        //捕获性分组
+        /*var reg=/([a-z]+)\s(\d{4})/;
+        var str="hello 2018";
+        alert(reg.exec(str));//hello 2018,hello,2018
+        alert(reg.exec(str).length);//3
+        alert(reg.exec(str)[0]);//hello 2018
+        alert(reg.exec(str)[1]);//hello
+        alert(reg.exec(str)[2]);//2018*/
+        /*数组中第一个数据是匹配整个正则表达式的字符串
+        * 数组中的第二个数据是第一个分组中的字符串
+        * 数组中的第二个数据是第二个分组中的字符串*/
+
+        //非捕获性分组  在不想捕获的分组前添加?:
+
+        /*var reg=/([a-z]+)\s(?:\d{4})/;
+        var str="hello 2018";
+        alert(reg.exec(str));//hello 2018,hello
+        alert(reg.exec(str).length);//2
+        alert(reg.exec(str)[0]);//hello 2018
+        alert(reg.exec(str)[1]);//hello*/
+
+
+
+        //前瞻捕获
+       /* var reg=/goo(?=gle)/;
+        var str="google";
+        alert(reg.exec(str));//goo*/
+
+
+        //换行模式
+        var reg=/^\d+/gm;//全局  换行
+        var str="1.baidu\n2.google\n3.ie";
+        alert(str.replace(reg,"#"));
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

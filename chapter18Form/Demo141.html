@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择框的使用</title>
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script>
+
+        addEvent(window,"load",function () {
+           var fm = document.getElementById("myForm");
+           var city=fm.elements["city"];
+           // alert(city);//[object HTMLSelectElement]
+            city.multiline=true;
+
+            var s1 = city.options[3].getAttribute("value");//shenzhen
+            var s2= city.options[3].firstChild.nodeValue; //深圳
+            alert(s1+"\n"+s2);
+
+
+        });
+    </script>
+</head>
+<body>
+<!--//multiple="multiple" size="3"-->
+    <form id="myForm">
+        <select name="city" >
+            <option value="beijing">北京</option>
+            <option value="shanghai">上海</option>
+            <option value="guangzhou">广州</option>
+            <option value="shenzhen">深圳</option>
+            <option value="nanjing">南京</option>
+        </select>
+    </form>
+</body>
+</html>

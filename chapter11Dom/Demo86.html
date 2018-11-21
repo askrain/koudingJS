@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查找元素节点getElementById()</title>
+    <script>
+       /* var div = document.getElementById("div1");
+        alert(div);//null*/
+       window.onload=function () {
+           var div = document.getElementById("div1");//得到了id为div1的元素节点
+           alert(div.aa);//chrome不支持自定义属性  ie9之下的浏览器支持
+           alert(div.innerText);//html  得到开始标签和结束标签之间的内容
+           alert(div.innerHTML);//html
+           alert(div.tagName);//标签名称DIV
+           alert(div.id);// 标签的id
+           alert(div.title)//title的值
+           alert(div.className)//class的值
+           alert(div.style);//得到的是样式对象[object CSSStyleDeclaration]
+           alert(div.style.color);//获取属性节点style的color值
+           div.style.color="blue";
+       };//页面加载完成时执行函数中的代码
+    </script>
+</head>
+<body>
+<div id="div1" title="标题" class="web" style="color:red" width="100px" aa="aa">html</div>
+<div id="div2">css</div>
+<div id="div3">js</div>
+<script>
+    /*var div = document.getElementById("div1");
+    alert(div);//[object HTMLDivElement]
+    alert(typeof div);//object  即每个元素节点被看成对象*/
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素周边大小</title>
+    <style>
+        body{ //给body的属性设置成这个后一切就正常了 说明body和html之间确实有间距
+            margin: 0px;
+            padding: 0px;
+        }
+
+
+        #div1{
+            width: 400px;
+            height: 400px;
+            background: red;
+            border: 20px solid black;
+
+        }
+    </style>
+    <script>
+        window.onload=function () {
+        //  clentTop  clientLeft获取元素的上边框  左边框的宽度
+            var div=document.getElementById("div1");
+           /* alert(div.clientTop);//20
+            alert(div.clientLeft);//20*/
+
+
+        //   getBoundingClientRect()  这个方法返回一个矩形对象，包含四个属性  left right top bottom
+            var rect = div.getBoundingClientRect();
+
+            var htmlElement = document.documentElement;
+            alert(htmlElement.clientTop);//0  ie7及以下版本的坐标是2    2
+            alert(htmlElement.clientLeft);//0
+            alert(rect.top);//8  说明body和html之间设置有间距
+            alert(rect.left);//8
+            alert(rect.bottom);//448
+            alert(rect.right);//448
+
+        }
+
+    //   获取元素各条边和整个窗体的距离（兼容）
+        function getLength(element) {
+            var top = document.documentElement.clientTop;
+            var left = document.documentElement.clientLeft;
+            var rect = element.getBoundingClientRect();
+            return{
+                top:rect.top-top,
+                bottom:rect.bottom-top,
+                left:rect.left-left,
+                right:rect.right-left
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1">JS学习</div>
+
+</body>
+</html>

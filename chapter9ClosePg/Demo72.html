@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>块级作用域</title>
+    <script>
+        //js中不存在块级作用域  ：if(){}   for(){}
+        /*function fun() {
+            for (var i = 1; i <= 3; i++) {
+                alert(i);
+            }
+            // alert(i);
+            var i;//前面定义的变量i影响后面定义的i的使用
+            alert(i);//4
+        }
+        fun();*/
+
+
+        //模拟块级作用域   在项目中尽量少使用全局的变量和函数
+        (function () {
+            //相当与作用域  建议经常使用  私有作用域
+
+        })();
+
+        /*function fun() {
+            (function () {
+                // 相当于块级作用域
+                for (var i = 1; i <=3 ; i++) {
+                    alert(i);
+                }
+
+            })();//匿名函数执行完，变量i从内存中释放
+            var i=10;
+            alert(i);
+
+        }
+        fun();*/
+
+
+        var a=12;
+        var a=15;
+        alert(a);//15
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

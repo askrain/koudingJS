@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作表格：使用DOM创建表格</title>
+    <script>
+
+        /**
+         * 思路是清晰的，但是比较麻烦
+         */
+       /* window.onload=function () {
+            var table=document.createElement("table");
+            var caption=document.createElement("caption");
+            table.appendChild(caption);
+            caption.innerHTML="学院信息表";
+            // caption.appendChild(document.createTextNode(学院信息表));
+            var thead=document.createElement("thead");
+            table.appendChild(thead);
+
+            var tr=document.createElement("tr");
+            thead.appendChild(tr);
+
+            var th1=document.createElement("th");
+            tr.appendChild(th1);
+            th1.appendChild(document.createTextNode("姓名"));
+
+            var th2=document.createElement("th");
+            tr.appendChild(th2);
+            th2.appendChild(document.createTextNode("性别"));
+
+            var th3=document.createElement("th");
+            tr.appendChild(th3);
+            th3.appendChild(document.createTextNode("年龄"));
+
+            var body=document.body;
+            body.appendChild(table);
+        }*/
+
+    //   使用DOM获取表格元素
+        window.onload=function () {
+            var table =document.getElementsByTagName("table")[0];
+            var caption=table.children[0].innerHTML;
+            alert(caption);//学院信息表
+           /* var gender = table.children[2].children[1].children[1].innerHTML;//不清晰还比较麻烦
+            alert(gender);*/
+           var tbody=table.getElementsByTagName("tbody")[0];//清晰  但是麻烦
+           var tr=tbody.getElementsByTagName("tr")[1];
+           var gender=tr.getElementsByTagName("td")[1];
+           alert(gender.innerHTML);
+        }
+
+
+    </script>
+</head>
+<body>
+<table width="300" border="1">
+    <caption>学院信息表</caption>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+    </tr>
+    </thead>
+
+
+    <tbody>
+    <tr>
+        <td>tom</td>
+        <td>male</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>jim</td>
+        <td>male</td>
+        <td>18</td>
+    </tr>
+    </tbody>
+
+
+
+    <tfoot>
+    <tr>
+        <td colspan="3">合计：35人</td>
+    </tr>
+    </tfoot>
+
+
+</table>
+</body>
+</html>

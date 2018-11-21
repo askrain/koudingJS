@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+    <script>
+
+
+        <!--建议使用的方式-->
+        var obj={
+            constructor:Student,//强制在创建Student对象时，使用Student的构造方法
+            country:"中国"
+        };
+
+        function Student(name, age) {
+            this.name = name;
+            this.age=age;
+            this.study=function () {
+                alert("name: "+this.name+"----age: "+this.age);
+            }
+        }
+
+        // Student.prototype=obj;//覆盖了student的原有的原型对象  /*建议使用的方式*/
+        Student.prototype.country="中国";//在Student原有的原型对象中添加属性country，意思是使用的还是原来的原型对象，没有覆盖
+        // alert(Student.prototype);//Object
+        // alert(obj.__proto__);//Object
+
+        var stu1=new Student("张三",52);
+        var stu2=new Student("李四",23);
+
+         alert(stu1.constructor);//function Student(name, age) {}
+        //在构造函数后添加：Student.prototype=obj;
+        // alert(stu1.constructor);//function Object() { [native code] }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

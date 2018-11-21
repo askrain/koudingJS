@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象的属性和方法</title>
+    <script>
+        //W3C提供了一个属性：relatedTarget  这个属性可以在mouseover和mouseout事件中获取从哪里移入和向哪里移出的DOM对象
+        //    跨浏览器添加事件方法
+        /**
+         *
+         * @param obj 被添加事件的对象
+         * @param evt  添加的事件
+         * @param fn    对应的函数
+         */
+        function addEvent(obj,evt,fn) {
+            if (obj.addEventListener){
+                obj.addEventListener(evt,fn,false);
+            } else if (obj.attachEvent){
+                obj.attachEvent("on"+evt, fn);
+            }
+        }
+
+        //    跨浏览器删除事件
+        function removeEvent(obj,evt,fn) {
+            if (obj.removeEventListener){
+                obj.removeEventListener(evt,fn, false);
+            } else if(obj.detachEvent){
+                obj.detachEvent("on"+evt, fn);
+            }
+        }
+
+        //    跨浏览器获取事件目标对象  被点击的对象  作用是矫正this的指向问题
+        function getTarget(evt) {
+            if (evt.target){
+                return evt.target;
+            } else if (window.event.srcElement){
+                return window.event.srcElement;
+            }
+        }
+
+
+        addEvent(window,"load",function () {
+            var div=document.getElementById("div1");
+            addEvent(div,"mouseover",function (evt) {
+                alert(evt.relatedTarget);//得到的是最近的移入的元素节点对象
+            })
+            addEvent(div, "mouseout",function (evt) {
+                alert(evt.relatedTarget);
+            })
+        });
+
+
+        //IE提供了两组分别用于移入和移除的属性，formElement和toElement，分别对应mouseover和mouseout
+
+
+    //    跨浏览器获取移入移出元素节点对象的方法
+
+        function getTarget(evt) {
+
+            var e=evt||window.event;
+            if (e.srcElement){
+                if (e.type=="mouseover"){
+                    return e.fromElement;
+                } else if (e.type =="mouseout") {
+                    return e.toElement;
+                }
+            } else if (e.relatedTarget) {
+                return e.relatedTarget;
+            }
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <div id="div1" style="width:100px;height:100px;background: red "></div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>行内样式应该注意的事项</title>
+    <style>
+        #div1{
+            color:blue;
+            font-size: 25px;
+        }
+    </style>
+    <script>
+        /**
+         * 1. style中没有设置的样式无法获取到  为空
+         * 2.style只能访问行内样式
+         */
+        window.onload=function () {
+            var div=document.getElementById("div1");
+            alert(div.width);//undefined
+            alert(div.style.color);//空
+        }
+    </script>
+</head>
+<body>
+<div id="div1">JavaScript学习</div>
+<div id="div2">hello world</div>
+</body>
+</html>

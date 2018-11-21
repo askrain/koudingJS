@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取鼠标的位置</title>
+    <script>
+        /*获取可视区和屏幕坐标  clientX  clientY  screenX screenY*/
+        document.onclick=function (evt) {
+            var e=evt||window.event;
+            // alert(e.clientX+"\n"+e.clientY);//可视区  浏览器空白的地方  存在滚动条的时候不影响数值（可视区嘛）
+            // alert(e.screenX+"\n"+e.screenY);//相对于屏幕的坐标  即使点击的地方不在窗口里
+            alert(e.shiftKey);//true 表示摁下了shift键
+        }
+
+    //    关于修改键：有时候我们需要通过键盘上的键来配合鼠标来触发某些特殊的事件，如shift ctrl alt meta（windows中的windows键 苹果中的cmd键） 他们经常被用来修改鼠标事件和行为 所以叫修改键
+    //     shiftKey  ctrlKey altKey metaKey
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

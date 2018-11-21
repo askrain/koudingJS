@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div{
+            width: 400px;
+            height: 400px;
+            background: forestgreen;
+            position: absolute;
+            top:50px;
+            left: 50px;
+            margin: 10px;
+
+        }
+
+        #div1{
+            width: 400px;
+            height: 400px;
+            background: red;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        //offsetLeft  相对于父元素的位置,即相对于body的位置默认单位px
+        window.onload=function () {
+            var div=document.getElementById("div");
+            var div1=document.getElementById("div1");
+            alert(div.offsetLeft+"\n"+div.offsetTop);//   50    50
+        //    获取父元素节点
+            alert(div.offsetParent);//[object HTMLBodyElement]
+            alert(div.offsetParent.tagName);// BODY 非ie浏览器和7以上版本认为父节点是body  以下的版本认为父节点为html
+
+            alert(div.offsetLeft);
+            alert(div.offsetTop);
+        //    当需要得到的是最内层和最外层的间距的时候，可以运用算数叠加的方法算出
+        //    当嵌套很多层的时候，这个方法比较麻烦，所以写成函数
+
+        //    获取和最外层html的上边的间距
+            function offsetTop(element) {
+                var top=element.offsetTop;
+                var parent=element.offsetParent;//得到夫元素节点
+                while (parent!=null){
+                    top+=parent.offsetTop;
+                    parent=parent.offsetParent;
+                }
+                return top;
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="div">
+<div id="div1">JS学习撒睡觉啊</div>
+</div>
+</body>
+</html>

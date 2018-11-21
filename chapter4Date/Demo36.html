@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date中的方法</title>
+    <script>
+        var d=new Date(Date.UTC(2018,10,3,8,12,20));
+        <!--通用方法-->
+        // alert(d.toString());//Sat Nov 03 2018 16:12:20 GMT+0800 (中国标准时间)
+        // alert(d.toLocaleString());//2018/11/3 下午4:12:20
+        // alert(d.valueOf());//1541232740000  毫秒数
+
+
+        <!--日期格式化方法-->
+        // alert(d.toDateString());//Sat Nov 03 2018
+        // alert(d.toTimeString());//16:12:20 GMT+0800 (中国标准时间)
+
+        // alert(d.toLocaleDateString());//2018/11/3
+        // alert(d.toLocaleTimeString());//下午4:12:20
+        // alert(d.toUTCString());//Sat, 03 Nov 2018 08:12:20 GMT
+
+        <!--组件方法-->
+        // alert(d.getFullYear());//2018
+        // alert(d.getMonth());
+        // alert(d.getDate());
+        // alert(d.getHours());
+        // alert(d.getMinutes());
+        // alert(d.getMilliseconds());
+
+        // alert(d.getUTCFullYear());
+        alert(d.getTimezoneOffset());//本地时间和UTC时间相差的分钟数
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定：</title>
+    <style>
+        #menu{
+            width: 50px;
+            background: forestgreen;
+            display: none;
+            position: absolute;
+        }
+    </style>
+    <script>
+        function addEvent(obj,evt,fn) {
+            if (obj.addEventListener){
+                obj.addEventListener(evt,fn,false);
+            } else if (obj.attachEvent){
+                obj.attachEvent("on"+evt, fn);
+            }
+        }
+
+        //    跨浏览器删除事件
+        function removeEvent(obj,evt,fn) {
+            if (obj.removeEventListener){
+                obj.removeEventListener(evt,fn, false);
+            } else if(obj.detachEvent){
+                obj.detachEvent("on"+evt, fn);
+            }
+        }
+
+        //    跨浏览器获取事件目标对象  被点击的对象  作用是矫正this的指向问题
+        function getTarget(evt) {
+            if (evt.target){
+                return evt.target;
+            } else if (window.event.srcElement){
+                return window.event.srcElement;
+            }
+        }
+
+        //    跨浏览器获取移入移出元素节点对象的方法
+
+        function getWhereTarget(evt) {
+            var e=evt||window.event;
+            if (e.srcElement){
+                if (e.type=="mouseover"){
+                    return e.fromElement;
+                } else if (e.type =="mouseout") {
+                    return e.toElement;
+                }
+            } else if (e.relatedTarget) {
+                return e.relatedTarget;
+            }
+        }
+
+    //    阻止事件的默认行为  比如：一个超链接的默认行为就点击后跳转到目标页面
+    //    那么阻止默认行为就可以屏蔽跳转的这种操作  而实现自定义操作
+    //    W3C preventDefault()  IE: returnValue=false
+
+
+        /*addEvent(window,"load",function () {
+           var a=document.getElementsByTagName("a")[0];
+           a.onclick=function () {
+               // return true;
+             return false;//直接返回false阻止了跳转
+           };
+        });*/
+    //    return false必须写在最后  具有一定的局限性  不能保证一定阻止时间的默认行为
+    //    把return false卸载前面，但后面的语句不会执行
+
+
+
+        //w3c
+        /*addEvent(window,"load",function () {
+            var a=document.getElementsByTagName("a")[0];
+            addEvent(a, "click",function (evt) {
+                evt.preventDefault();
+                alert("hello");
+            })
+        });*/
+
+        //ie
+        addEvent(window,"load",function () {
+            var a=document.getElementsByTagName("a")[0];
+            addEvent(a, "click",function (evt) {
+                var e=evt||window.event;
+                e.returnValue=false;
+                alert("hello");
+            })
+        });
+
+    //    跨浏览器实现阻止事件的默认行为
+        function preDef(evt) {
+            var e=evt||window.event;
+            if (e.preventDefault){//w3c
+                e.preventDefault();
+            } else{
+                e.returnValue=false;
+            }
+        }
+
+
+
+
+
+
+
+    //    上下文菜单事件：contextmenu  当我们右击网页的时候，会自动出现windows自带的菜单
+    //    contextmenu 事件来修改我们指定的菜单，但前提是把右击的默认行为取消掉
+
+
+        addEvent(window,"load",function (evt) {
+            var  text=document.getElementById("text");
+        //    取消默认的右击鼠标时显示菜单的行为
+            addEvent(text,"contextmenu",function (evt) {
+               preDef(evt)
+            //    显示自定义的菜单
+                var e=evt||window.event;
+                var menu=document.getElementById("menu");
+               //得到鼠标的坐标 实现菜单和鼠标位置移动的效果
+                menu.style.left=e.clientX+"px";
+                menu.style.top = e.clientY+"px";
+                menu.style.display="block";
+
+            //    给document添加click事件实现点击 区域外的时候menu消失的效果
+                addEvent(document,"click",function () {
+                    menu.style.display="none";
+                })
+            });
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <a href="http://www.baidu.com">跳转到百度</a><br>
+    <ul id="menu">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+    </ul>
+    <textarea id="text" style="width: 200px;height: 100px"></textarea>
+</body>
+</html>

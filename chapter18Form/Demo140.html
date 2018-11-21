@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择框的使用</title>
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script>
+        /**
+         * 选择框是通过select和option元素创建的
+         * HTMLSelectElement的属性和方法：
+         * add（new，rel） 插入新元素，并指定位置
+         * multiple  布尔值，是否允许多选选项  需要摁住Ctrl
+         * options <option>元素的HTMLCollection集合
+         * remove(index) 移除给定位置的选项
+         * selectedIndex  基于0的选中项的索引  如果没有选中项，则值为-1
+         * size  选择框中的可见行数
+         *
+         * HTMLOptionElement的属性和方法
+         * index  当前选项在options集合中的索引
+         * label 当前选项的标签
+         * selected  表示当前选项是否被选中
+         * text 选项的文本
+         * value 选项的值
+         */
+        addEvent(window,"load",function () {
+           var fm = document.getElementById("myForm");
+           var city=fm.elements["city"];
+            var other=fm["other"];
+           // alert(city);//[object HTMLSelectElement]
+            city.multiline=true;
+            // city.size=3;
+            // alert(city.type);//select-one
+            // alert(city.options);//[object HTMLOptionsCollection]
+            // alert(city.options.length);// 5
+            // alert(city.options[3]);//[object HTMLOptionElement]
+            // alert(city.options[3].value);//shenzhen
+            // alert(city.options[3].text);//深圳
+            // value和text是DOM提供的方式 使用标准的DOM方式获取选项的value和text  但兼容性不太好
+            // var s1 = city.options[3].getAttribute("value");//shenzhen
+            // var s2= city.options[3].firstChild.nodeValue; //深圳
+            // alert(s1+"\n"+s2);
+        //    没有指定value值的时候，会获取到text  ie7及以下版本获得的为空
+            addEvent(city,"change",function () {
+               /* alert(this.selectedIndex);
+                alert(city.options[this.selectedIndex].value);
+                alert(city.options[this.selectedIndex].text);*/
+               /*if (city.options[3].selected){
+                   alert("深圳被选中");
+               }*/
+            })
+        //    设置被选中的选项
+        //    city.selectedIndex=3;
+        //     city.options[3].selected=true;
+
+        //    添加选项
+        //    使用dom
+           /* var option=document.createElement("option");
+            var textNode=document.createTextNode("大连");
+            option.appendChild(textNode);
+            option.setAttribute("value","dalian");
+            city.appendChild(option);*/
+        //   使用select的add()
+            var option=new Option("大连","dalian");
+            city.appendChild(option);//直接加
+            // city.options.add(option,2);//选位置加
+            // city.add(option,1);//选位置添加
+
+
+        //    删除选项
+        //     city.removeChild(city.options[0]);//DOM删除
+                /*city.remove(0);
+                city.remove(0);
+                city.remove(0);//连续删除*/
+            // city.options[0]=null;
+
+        //    移动选项
+            /*
+            addEvent(city,"click",function () {
+                other.appendChild(this.options[this.selectedIndex]);
+            })*/
+
+
+        //    排列选项
+        //     alert(city.selectedIndex);//-1
+        //     alert(city.options[0].index);//0
+             var nanjing=city.options[4];
+             // city.insertBefore(nanjing, city.options[0]);//南京排第一
+             city.insertBefore(nanjing, city.options[nanjing.index-2]);//南京排第一
+
+        });
+    </script>
+</head>
+<body>
+<!--//multiple="multiple" size="3"-->
+    <form id="myForm">
+        <select name="city" multiple="multiple" size="4" >
+            <option value="beijing">北京</option>
+            <option value="shanghai">上海</option>
+            <option value="guangzhou">广州</option>
+            <option value="shenzhen">深圳</option>
+            <option value="nanjing">南京</option>
+        </select>
+        <br/>
+        <br/>
+        <select name="other" multiple="multiple" size="5" >
+            <option value="new york">纽约</option>
+        </select>
+    </form>
+</body>
+</html>

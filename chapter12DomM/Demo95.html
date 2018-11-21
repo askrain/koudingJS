@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document类型</title>
+    <script>
+        /*
+        Document 类型：Document类型表示文档，或者文档的根节点，而这个节点是隐藏的，没有具体的元素标签
+
+         */
+        /*alert(document);//[object HTMLDocument]
+        alert(document.nodeType); // 9  DOCUMENT_NODE 文档根
+        alert(document.nodeName);//#document
+        alert(document.childNodes[0].nodeType);//10  DOCUMENT_TYPE_NODE
+        alert(document.childNodes[1].nodeName);//HTML*/
+       /* alert(document.documentElement);//[object HTMLHtmlElement]
+        alert(document.documentElement.nodeName);//HTML
+        alert(document.documentElement.nodeType);//1*/
+       // alert(document.doctype.nodeName);//html  相当于类型的值  type  10  DOCUMENT_TYPE_NODE
+        window.onload=function () {
+            alert(document.body.nodeName);//BODY  这个document.doctype存在兼容问题，用document.childNoes[0]
+        }
+        /*
+        document.title  获取title标签的值  Document类型
+        document.URL    获取url路径
+        document.domain  获取域名服务器  就是放在服务器上的  放在本机上的服务器则显示localhost
+        document.referer 获取上一个url 服务器端   
+        document.anchors 获取文档中带name属性的<a>元素集合
+        document.links   获取文档中带href属性的<a>元素结合
+        document.applets 获取文档中<applets>元素集合  已不用
+        document.forms   获取元素中<form>元素结合
+        document.images  获取文档中<img>集合
+         */
+        alert(document.URL);//http://localhost:2922/koudingJS/chapter12DomM/Demo95.html?_ijt=6v3bfjseaau5h11b06hk978ga2
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

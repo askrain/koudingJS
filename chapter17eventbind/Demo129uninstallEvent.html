@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>卸载事件</title>
+    <script>
+        function addEvent(obj,evt,fn) {
+            if (obj.addEventListener){
+                obj.addEventListener(evt,fn,false);
+            } else if (obj.attachEvent){
+                obj.attachEvent("on"+evt, fn);
+            }
+        }
+
+        //    跨浏览器删除事件
+        function removeEvent(obj,evt,fn) {
+            if (obj.removeEventListener){
+                obj.removeEventListener(evt,fn, false);
+            } else if(obj.detachEvent){
+                obj.detachEvent("on"+evt, fn);
+            }
+        }
+
+
+        //    跨浏览器实现阻止事件的默认行为
+        function preDef(evt) {
+            var e=evt||window.event;
+            if (e.preventDefault){//w3c
+                e.preventDefault();
+            } else{
+                e.returnValue=false;
+            }
+        }
+
+    //    卸载前事件：beforeunload  这个事件可以在刷新 关闭 或转到其他页面时给出提示  询问是否离开当前页面
+        addEvent(window,"beforeunload",function (evt) {  //这个事件谷歌无效
+            var e=evt||window.event;
+            preDef(e);
+
+        })
+
+
+    //    鼠标滚轮事件： mousewheel(非火狐浏览器) 和 DOMMouseScroll(火狐浏览器)，用于获取鼠标上下滚轮的距离
+    addEvent(document,"mousewheel",function (evt) {
+        var e=evt||window.event;
+        // return e.wheelDelta;//获取滚动的距离  好像都是+-120
+        alert(e.wheelDelta);  //火狐对应的属性-detail *40  一般加负号  因为方向与常规的相反
+    })
+
+    //    跨浏览器的兼容写法：
+        function getWD(evt) {
+            var e=evt||window.event;
+            if (e.wheelDelta){
+                return e.wheelDelta;
+            } else if (e.detail){
+                return -e.detail*40;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+<a href="http://www.baidu.com">跳转到百度</a><br>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function类型</title>
+
+    <script>
+        //也是引用数据类型
+
+        //1. 函数的声明方式:普通
+        function fun(num1, num2) {
+            return num1+num2;
+        }
+        //2. 使用变量的方式声明函数
+        var fun2=function (a,b) {
+            return a*b;
+        }
+        //3. 使用new 创建函数
+        var  fun3=new Function ('n1','n2','return n1+n2');//不建议使用  效率低
+        var result = fun3(2,2);
+        alert(result);
+
+
+
+        //作为参数来传递 或者作为返回结果return
+        function add(a,b) {
+            return a+b;
+        }
+        function show(fun, num) {
+            return fun(num,88);//add(num,88)
+        }
+        var show1 = show(add, 23);
+        alert(show1);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

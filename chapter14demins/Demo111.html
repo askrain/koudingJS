@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素实际大小</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            padding: 20px;//增加了宽度和高度
+            border: 5px;//不影响宽高
+            margin: 10px;//不影响宽高
+            overflow: scroll;//占用了已有的大小
+        }
+
+        /*非ie浏览器得到的是计算后的宽高  ie7及一下版本为0*/
+    </style>
+    <script>
+        <!--获取元素实际大小-->
+        window.onload=function () {
+            var div=document.getElementById("div1");
+            alert(div.clientWidth+"\n"+div.clientHeight);//200 200 默认单位px 会自动转换位px单位
+        }
+
+    </script>
+</head>
+<body>
+<div id="div1">JS学习</div>
+
+</body>
+</html>

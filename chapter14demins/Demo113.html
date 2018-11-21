@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: forestgreen;
+            border: 10px;
+            padding: 10px;
+            margin: 10px;
+            overflow: scroll;
+        }
+    </style>
+    <script>
+        //offsetWidth  可以获取元素的实际大小.默认单位px
+        window.onload=function () {
+            var div=document.getElementById("div1");
+            alert(div.offsetWidth+"\n"+div.offsetHeight);//200 200
+        //    增加边框  无影响
+        //    增加内边距  原来的大小加上内边距的大小*2
+        //    添加外边距  无影响
+        //    增加滚动条  无影响
+
+        //    没有设置宽度和高度的时候，得到的是实际的宽度高度
+        //    对于元素大小的获取：一般是块级的元素block，并且已经设置了css大小的元素较为方便。如果是
+        //    内联元素inline或者没有设置大小点的元素就尤为麻烦，所以，建议使用的时候注意
+        }
+    </script>
+</head>
+<body>
+<div id="div1">JS学习撒睡觉啊</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用html dom操作表格</title>
+    <script>
+        /*window.onload=function () {
+            var table=document.createElement("table");
+            table.width = 300;
+            table.border="1";
+            var caption = table.createCaption();
+            caption.innerHTML="学院信息表";
+
+            var thead = table.createTHead();
+            var tr = thead.insertRow(0);
+
+            var td1 = tr.insertCell(0);
+            td1.innerHTML="姓名";
+
+            var td2 = tr.insertCell(1);
+            td2.innerHTML="性别";
+
+            var td3 = tr.insertCell(2);
+            td3.innerHTML="年龄";
+
+
+            //tbody  th标签要使用以前的方式创建   <th>姓名</th>
+            document.body.appendChild(table);
+        }*/
+
+    //    获取表格中的元素
+        window.onload=function () {
+            var table=document.getElementsByTagName("table")[0];
+            var title = table.caption.innerHTML;
+            alert(title);
+            alert(table.thead);
+            var rows = table.rows;
+            alert(rows.length);//4
+            var bodys = table.tBodies;//获取表格中的body集合
+            alert(bodys[0].rows.length);//2
+            alert(bodys[0].rows[0]);//得到第一行
+            alert(bodys[0].rows[0].cells[0].innerHTML);
+
+            table.deleteCaption();
+            table.deleteTHead();
+            table.tBodies[0].deleteRow(1);
+            table.tBodies[0].rows[0].deleteCell(1);
+
+        }
+    </script>
+</head>
+<body>
+<table width="300" border="1">
+    <caption>学院信息表</caption>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+    </tr>
+    </thead>
+
+
+    <tbody>
+    <tr>
+        <td>tom</td>
+        <td>male</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>jim</td>
+        <td>male</td>
+        <td>18</td>
+    </tr>
+    </tbody>
+
+
+
+    <tfoot>
+    <tr>
+        <td colspan="3">合计：35人</td>
+    </tr>
+    </tfoot>
+
+
+</table>
+</body>
+</html>

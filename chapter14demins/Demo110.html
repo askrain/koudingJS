@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素CSS大小：在样式中为元素定义的宽度和高度</title>
+    <link rel="stylesheet" type="text/css" href="..\css\basic.css">
+    <style></style>
+    <script>
+        //通过style元素获取元素的宽高
+        /*window.onload=function () {
+            var div=document.getElementById("div1");
+            alert(div.style.width);//500px  没有设定值的时候，为空
+        }*/
+        //通过计算后的样式获取元素的大小
+       /* window.onload=function () {
+            var div=document.getElementById("div1");
+           var style =window.getComputedStyle?window.getComputedStyle(div, null):null||div.currentStyle;
+           alert(style.width);//计算后的宽度，如果div中设置的话，显示的是设置的宽度。没有设置的话，显示的是默认的宽度  没有设置的时候ie8及以下版本为auto
+        }*/
+
+    //   使用样式表的CSSStyleSheet对象中的cssRules(或者rule)属性获取元素的大小 只能操作内联和链接
+    //    不能获取行内和计算后的样式  而且得到的是样式设定的高度和宽度  不是最后实际的宽度和高度
+        window.onload=function () {
+            var sheet=document.styleSheets[0];
+            var rules=sheet.cssRules||sheet.rules;
+            var rule=rules[0];
+            var width=rule.style.width;
+            var height=rule.style.height;
+            alert(width+"\n"+height);//1000 300
+        }
+
+    </script>
+</head>
+<body>
+<div id="div1" style="/*width:500px;height:200px;*/color: red">  javascript学习</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨游览器实现事件处理</title>
+    <style type="text/css">
+        .red {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+    <script>
+        //IE事件处理函数：attachEvent() detachEvent()  ie8及以下版本支持该方法 ie9 10支持  11不支持
+        //W3C事件处理函数  addEventListener removeEventListener  非ie浏览器 ie8以上支持
+
+        //在脚本模型中  ie8及以下版本的浏览器不支持通过参数接收事件对象
+
+        /*window.attachEvent("onload",function () {
+            var div=document.getElementById("div1");
+           /!* div.onclick=function (evt) {
+                alert(evt);//ie 9[object mouseEvent  ]  ie8 undefined
+            };*!/
+            div.attachEvent("onclick",function (evt) {
+                alert(evt);// 使用attach方法，ie8及以下版本的浏览器支持通过参数接收事件
+            })
+        });*/
+
+    //    跨浏览器添加事件方法
+        /**
+         *
+         * @param obj 被添加事件的对象
+         * @param evt  添加的事件
+         * @param fn    对应的函数
+         */
+        function addEvent(obj,evt,fn) {
+            if (obj.addEventListener){
+                obj.addEventListener(evt,fn,false);
+            } else if (obj.attachEvent){
+                obj.attachEvent("on"+evt, fn);
+            }
+        }
+
+    //    跨浏览器删除事件
+        function removeEvent(obj,evt,fn) {
+            if (obj.removeEventListener){
+                obj.removeEventListener(evt,fn, false);
+            } else if(obj.detachEvent){
+                obj.detachEvent("on"+evt, fn);
+            }
+        }
+
+    //    跨浏览器获取事件目标对象  被点击的对象  作用是矫正this的指向问题
+        function getTarget(evt) {
+            if (evt.target){
+                return evt.target;
+            } else if (window.event.srcElement){
+                return window.event.srcElement;
+            }
+        }
+
+        /*ie中的事件绑定函数attachEvent和detachEvent不要在实践中去使用，原因有以下：
+        * 1.ie9及以上版本开始支持W3C中的事件绑定函数
+        * 2.IE的事件绑定函数无法传递this
+        * 3.IE的事件绑定函数不支持捕获
+        * 4.同一个函数注册绑定后，没有屏蔽掉
+        * 5.有内存泄露的问题*/
+        addEvent(window, "load",function () {
+           alert("heh");
+        });
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <div id="div1" class="red"></div>
+</body>
+</html>

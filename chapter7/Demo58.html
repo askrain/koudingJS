@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象和原型</title>
+    <script>
+        //采用构造方法（函数）来创建特定的对象  1.直接使用this 2.没有return  3.没有显式的创建对象
+        function Student(name, age) {
+            this.name = name;//后台创建了new Object()
+            this.age=age;//this 指向了这个对象
+            this.study=function () {
+                alert("name: "+this.name+"----age: "+this.age);
+            }//后台返回了该对象
+        }
+        var stu=new Student("张三",52);
+        /*alert(stu.name);
+        alert(stu.age);
+        stu.study();*/
+
+        var stu2=new Student("李四",23);
+        alert(stu2.name);
+        alert(stu2.age);
+        alert(typeof stu2);
+        alert(stu2 instanceof Student);//判断识别是什么类型的对象
+        stu2.study();
+        alert(stu.study==stu2.study);//false  study存储的是函数的引用
+
+
+        /*构造函数的特点
+        * 1. 函数名首字母大写,为了含普通函数做区分
+        * 2. 使用构造函数的时候必须使用new
+        * 3. */
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

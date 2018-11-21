@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层次关系</title>
+    <script>
+        window.onload=function () {
+            var div=document.getElementById("div1");
+           /* alert(div.firstChild.nodeName);//#Text
+            alert(div.childNodes[1].nodeName);//EM
+            alert(div.ownerDocument);//[object HTMLDocument]
+            alert(div.ownerDocument==document);//true*/
+            /*alert(div.ownerDocument.nodeType);//9
+            alert(div.ownerDocument.nodeName);//#Document
+            alert(div.ownerDocument.nodeValue);//null*/
+            /*alert(div.firstChild.nextSibling.nodeName);//EM
+            alert(div.parentNode.nodeName);//BODY*/
+            alert(div.attributes);//[object NamedNodeMap]  这个要记住
+            alert(div.attributes.item(1).nodeName);//title
+            alert(div.attributes.length);//3
+            alert(div.attributes[0]);//得到第一个属性节点对象  [object Attr]
+            alert(div.attributes[0].nodeName);//id
+            alert(div.attributes[0].nodeValue);//div1
+            alert(div.attributes[0].nodeType);//2
+            alert(div.attributes["title"].nodeValue);//标题
+        }
+
+        //做一个总结：
+        // 对于[object HTMLCollection]  对象，获取指定下标的元素，col[1].tagName  或者col.item(0).tagValue
+    //对于[object NodeList]  list[0].tagName  或者list.item(1)
+
+        //  [object NamedNodeMap]也使用上述方法
+        // 总结：不论是nodeLIst还是HTMLCollection还是NamedNodeMap都有这两种方式获取
+
+    </script>
+</head>
+<body>
+    <div id="div1" title="标题" class="js">
+        js学习
+        <em>hello</em>
+        你好！
+    </div>
+</body>
+</html>

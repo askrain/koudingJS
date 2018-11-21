@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+    <script>
+        //引用类型中都有prototype  该属性指向对象
+        var obj={
+            country:"中国",
+            name:"原型name"
+        };
+
+        function Student(name, age) {
+            this.name = name;
+            this.age=age;
+            this.study=function () {
+                alert("name: "+this.name+"----age: "+this.age);
+            }
+        }
+        Student.prototype=obj;//prototype属性指向一个对象  即把Student的原型设置为obj对象
+
+        var stu1=new Student("张三",52);
+        var stu2=new Student("李四",23);
+        /*alert(stu1.__proto__.__proto__);//[object Object]
+        alert(obj.__proto__);//[object Object]
+        alert(obj.__proto__.__proto__);//null  因为Object是最顶层的 所以object没有原型对象*/
+
+    //    判断一个对象是否指向了构造函数的原型对象
+        /*var b = Student.prototype.isPrototypeOf(stu1);
+        alert(b);*/
+
+        alert(stu1.name);//stu1对象中的属性 name的值  对象中含有该属性的时候，则优先使用对象中的 否则使用prototype对象中的属性
+        delete stu1.name;//删除stu1的name属性
+        alert(stu1.name);
+
+        var b = stu1.hasOwnProperty("name");//判断对象本身是否有某属性
+        alert(b);//false
+
+        alert("name" in stu1);//true  自身或者原型中含有该属性都返回true
+    </script>
+</head>
+<body>
+
+</body>
+</html>

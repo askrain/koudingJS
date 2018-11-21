@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>间隔调用、超时调用</title>
+    <script>
+        <!--超时调用1-->
+       /* setTimeout("alert('hello')",1000);
+
+
+        //2
+        function show() {
+            alert("night");
+        }
+
+        //3
+        setTimeout(show, 2000);
+        var b=setTimeout(function () {
+            alert("第三种写法")
+        },3000);
+        alert(b);//2
+        //setTimeOut返回的是唯一的整数值 代表超时调用
+        clearTimeout(b);//清除超时调用 不过没有必要 */
+
+
+       //间隔调用  实现重复调用  返回唯一的整数
+        /*var count=0;
+        var a=setInterval(function () {
+            count++;
+            if (count>3)//调用和指定次数的某个函数
+                clearInterval(a);
+            else
+                alert("hello");
+
+        },1000);
+        // clearInterval(a);//清除间隔调用 在显示hello之前就被清除了*/
+
+
+
+    //    实现定时器  方法1
+       /* var num=0;
+        var s=setInterval(function () {
+            num++;
+            if (num ==5){
+                alert("5秒计时结束");
+                clearInterval(s);
+            }
+        },1000);*/
+
+    //    方法2  建议使用的方法（不用清除）
+        var c=0;
+        function fun() {
+            c++;
+            if (c ==5){
+                alert("5秒计时结束");
+            } else{
+                setTimeout(fun,1000);
+            }
+        }
+        setTimeout(fun, 1000);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

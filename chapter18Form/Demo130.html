@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取表单</title>
+    <script>
+        function addEvent(obj,evt,fn) {
+            if (obj.addEventListener){
+                obj.addEventListener(evt,fn,false);
+            } else if (obj.attachEvent){
+                obj.attachEvent("on"+evt, fn);
+            }
+        }
+
+        function removeEvent(obj,evt,fn) {
+            if (obj.removeEventListener){
+                obj.removeEventListener(evt,fn, false);
+            } else if(obj.detachEvent){
+                obj.detachEvent("on"+evt, fn);
+            }
+        }
+
+    //    获取表单对象的方式
+        addEvent(window,"load",function () {
+            var form = document.getElementById("ff");
+            alert(form);//[object HTMLFormElement]
+            var form1=document.getElementsByName("myForm");//获取的是集合  因为有可能是多个name相同的情况
+            alert(form1);//[object NodeList]
+            var form2=document.getElementsByTagName("form")[0];
+            alert(form2);//[object HTMLFormElement]
+            var form3 = document.forms[0];
+            alert(form3);//[object HTMLFormElement]
+            var form4=document.forms["myForm"];
+            alert(form4);
+            alert(document.myForm);//不建议使用  因为可以存在name相同的多个form
+        })
+    </script>
+</head>
+<body>
+    <form id="ff" name="myForm"></form>
+    <form id="aa" name="myForm"></form>
+</body>
+</html>

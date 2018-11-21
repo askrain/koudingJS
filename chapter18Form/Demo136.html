@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本框的使用</title>
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script>
+        //在html中，有两种方式来表现文本框：一种是单行文本框input  一种是多行文本框  textarea  input标签有value属性，而textarea没有
+        addEvent(window,"load",function () {
+           var fm=document.getElementById("myForm");
+           var text=fm.elements["user"];
+           var textarea=fm.elements["content"];
+           // alert(text.value);//请输入姓名
+           // alert(textarea.value);//大家好！
+
+            //标准DOM
+            // alert(text.getAttribute("value"));//请输入姓名
+            // alert(textarea.getAttribute("value"));//null
+
+        //    defaultValue  获取到的是最初设置的value值
+        //     alert(text.defaultValue);///请输入姓名
+        //     text.select();//文本框内全部选中  光标定位在该文本框中
+
+        //    选中部分文本  非IE、IE9及以上的浏览器
+            /*text.setSelectionRange(0,1);//不包含右侧
+            text.focus();*/
+
+        //    ie8及以下  范围的操作
+            var range=text.createTextRange();//创建范围对象
+            range.collapse(true);//设置光标指向文本的起始位置
+            range.moveStart("character",0);
+            range.moveEnd("character",1);
+            range.select();
+
+        });
+
+    //    兼容的写法
+        function selectText(text,start,end) {
+            if (text.setSelectionRange){
+                text.setSelectionRange(start,end);
+            } else if (text.createTextRange){
+                var range=text.createTextRange();//创建范围对象
+                range.collapse(true);//设置光标指向文本的起始位置
+                range.moveStart("character",start);
+                range.moveEnd("character",end-start);
+                range.select();
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id="myForm">
+        姓名<input type="text" name="user" value="请输入姓名"><br/>
+        <textarea name="content">大家好！</textarea>
+    </form>
+</body>
+</html>

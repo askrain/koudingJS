@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单的提交</title>
+    <script>
+        function addEvent(obj,evt,fn) {
+            if (obj.addEventListener){
+                obj.addEventListener(evt,fn,false);
+            } else if (obj.attachEvent){
+                obj.attachEvent("on"+evt, fn);
+            }
+        }
+
+        function removeEvent(obj,evt,fn) {
+            if (obj.removeEventListener){
+                obj.removeEventListener(evt,fn, false);
+            } else if(obj.detachEvent){
+                obj.detachEvent("on"+evt, fn);
+            }
+        }
+
+        function preDef(evt) {
+            var e=evt||window.event;
+            if (e.preventDefault){//w3c
+                e.preventDefault();
+            } else{
+                e.returnValue=false;
+            }
+        }
+
+    //  提交表单
+        /*addEvent(window,"load",function () {
+        //    阻止submit按钮的submit事件的默认行为:以下代码没有实现  要将按钮的click事件改为click才能阻止
+            var sub=document.getElementById("sub");
+            addEvent(sub, "submit",function (evt) {
+                preDef(evt);
+            })
+        });*/
+
+    //    阻止表单的submit行为  禁止了form的提交的默认行为
+       /* addEvent(window,"load",function () {
+           var fm=document.getElementById("myForm");
+           addEvent(fm, "submit",function (evt) {
+               // preDef(evt);
+               alert("hello");//先显示弹窗
+           })
+        });*/
+
+       addEvent(window,"load",function () {
+           var btn=document.getElementById("btn");
+           var fm=document.getElementById("myForm");
+           var strong = document.getElementById("st");
+           addEvent(btn, "click",function (evt) {
+               fm.submit();//只要是可以被点击的都可以被提交
+           })
+
+           addEvent(strong, "click",function () {
+               fm.submit();
+           })
+
+       //   用户点击了Ctrl+回车键 也可以提交  evt.ctrlKey  e.keyCode
+           addEvent(document,"keydown",function (evt) {
+               var e=evt||window.event;
+               if (e.ctrlKey&&e.keyCode==13){
+                   fm.submit();
+               }
+           })
+
+
+       })
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <form id="myForm">
+        姓名：<input type="text" name="user"/><br/>
+        <input type="button" id="btn" value="普通按钮也能提交">
+        <strong id="st">我也能提交</strong>
+        <input id="sub" type="submit" value="提交">
+    </form>
+
+</body>
+</html>

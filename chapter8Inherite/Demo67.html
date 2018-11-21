@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寄生组合继承</title>
+    <script>
+        //以下是组合继承
+        /*function Person(age) {
+            this.age=age;
+            this.family=['爸爸','妈妈'];
+        }
+        Person.prototype.fun=function () {
+            return this.age+this.family;
+        }
+        function Student(age) {
+            Person.call(this,age);//第二次使用Person()函数
+        }
+        Student.prototype=new Person();//第一次使用Person()函数*/
+
+        function getObj(o) {
+            function F() {}
+            F.prototype=o;
+            return new F();
+        }
+
+        function createObj(Person,Student) {//寄生函数
+            var obj = getObj(Person.prototype);
+            obj.constructor=Student;//这句话很重要
+            Student.prototype=obj;
+        }
+        /*------------------------------------------*/
+        function Person(age) {
+            this.age=age;
+            this.family=['爸爸','妈妈'];
+        }
+        Person.prototype.fun=function () {
+            return this.age+this.family;
+        }
+        function Student(age) {
+            Person.call(this,age);
+        }
+        createObj(Person,Student);// Student.prototype=new Person();
+        var stu=new Student(12);
+        var re = stu.fun();
+        alert(re);
+        alert(stu.constructor);//Person的构造函数
+    </script>
+</head>
+<body>
+
+</body>
+</html>

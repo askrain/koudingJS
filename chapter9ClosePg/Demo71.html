@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包中的this指向的是window，因为闭包并不属于这个对象的属性或者方法</title>
+    <script>
+        /*var obj={
+            name:"lisi",
+            fun:function () {
+                return this;
+            }
+        }
+        alert(obj.fun());//Object*/
+
+        /*var obj={
+            name:"lisi",
+            fun:function () {
+                return function () {
+                    return this;
+                };
+            }
+        }
+        alert(obj.fun());//函数*/
+
+        /*var obj={
+            name:"lisi",
+            fun:function () {
+                return function () {
+                    return this;
+                };
+            }
+        }
+        alert(obj.fun()());//闭包中的this指向：window*/
+
+
+        var name="window1";
+        var obj2={
+            name:"object",
+            fun:function () {
+                return function () {
+                    return this.name;
+                };
+            }
+        };
+        alert(obj2.fun()());//window
+    //    使用对象冒充
+        alert(obj2.fun().call(obj2));//Object
+
+        /*var name="window";
+        var obj2={
+            name:"lili",
+            fun:function () {
+                var t=this;
+                return function () {
+                    return t.name;
+                };
+            }
+        };
+        alert(obj2.fun()());//lili
+        alert(obj2.fun().call(obj2));//lili*/
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

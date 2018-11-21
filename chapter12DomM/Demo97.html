@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM扩展</title>
+</head>
+<script>
+    /**
+     * 呈现模式：从IE6开始区分标准模式和混杂 （怪异模式），主要看文档声明。
+     * IE 为document对象添加了一个名为compatMode属性
+     * 这个属性可以识别IE浏览器的文档所处的模式
+     * CSS1Compat表示的是标准模式   BackCompat表示的是混杂模式
+     */
+   /* alert(document.compatMode);//CSS1Compat  把第一行的注释掉，就变成是BackCompat
+    if (document.compatMode=='CSS1Compat')
+        alert(document.documentElement.clientWidth);
+    else
+        alert(document.body.clientWidth);*/
+
+
+    /**
+     * 滚动  DOM提供了滚动页面的方式
+     */
+    /*window.onload=function () {
+        var div = document.getElementById("div1");
+        div.scrollIntoView();//将某个元素节点移动到视野范围之内
+    }*/
+
+
+
+
+    /**
+     * children属性，解决节点空白问题
+     */
+    /*window.onload=function () {
+        var div=document.getElementById("div1");
+        alert(div.childNodes.length);//7
+        alert(div.children.length);//3  获取了正确的子节点的个数
+        alert(div.children[0]);//[object HTMLParagraphElement]
+    }*/
+
+
+    /**
+     * contains()方法  判断一个节点是不是另一个节点的后代
+     */
+    window.onload=function () {
+        var div=document.getElementById("div1");
+        var p = div.children[0];
+        alert(div.contains(p));//true
+    }
+</script>
+<body>
+<p>122</p>
+<p>2324r</p>
+<p>1dww</p>
+<p>dw</p>
+<p>ffef</p>
+<p>f4f</p>
+<p>122</p>
+<p>2324r</p>
+<p>1dww</p>
+<p>dw</p>
+<p>ffef</p>
+<p>f4f</p>
+<p>122</p>
+<p>2324r</p>
+<p>1dww</p>
+<p>dw</p>
+<p>ffef</p>
+<p>f4f</p>
+<p>122</p>
+<p>2324r</p>
+<p>1dww</p>
+<p>dw</p>
+<p>ffef</p>
+<p>f4f</p>
+<p>122</p>
+<p>2324r</p>
+<p>1dww</p>
+<p>dw</p>
+<p>ffef</p>
+<p>f4f</p>
+<p>122</p>
+<p>2324r</p>
+<p>1dww</p>
+<p>dw</p>
+<p>ffef</p>
+<p>f4f</p>
+<p>122</p>
+<p>2324r</p>
+<p>1dww</p>
+<p>dw</p>
+<p>ffef</p>
+<p>f4f</p>
+<p>122</p>
+<p>2324r</p>
+<p>1dww</p>
+<p>dw</p>
+<p>ffef</p>
+<p>f4f</p>
+<div id="div1">
+    <p>语文</p>
+    <p>数学</p>
+    <p>英语</p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态加载脚本和样式</title>
+    <link type="text/css" rel="stylesheet" href="../css/basic.css">
+    <script > /*type="text/javascript" src="..."*/
+        // show();
+        //动态加载js文件
+       /* var flag=true;
+        if (flag){
+            var script=document.createElement("script");
+            script.type="text/javascript";
+            script.src="../js/test.js";
+            // document.head//存在浏览器兼容问题
+            var head = document.getElementsByTagName("head")[0];
+            head.appendChild(script);
+
+        }
+        window.onload=function(){
+            show();
+        }
+
+        //动态加载js文件
+        function loadScript(url) {
+            var script=document.createElement("script");
+            script.type="text/javascript";
+            script.src=url;
+            var head = document.getElementsByTagName("head")[0];
+            head.appendChild(script);
+        }*/
+
+
+        //动态执行js代码
+        // alert("heh");  这个不能够控制什么时候执行
+        var flag=true;
+        if (flag){
+            var script=document.createElement("script");
+            script.type="text/javascript";
+            var text=document.createTextNode("alert('helle')");
+            script.appendChild(text);
+            var head = document.getElementsByTagName("head")[0];
+            head.appendChild(script);//ie8及以下的版本不支持
+            // script.text = "alert('helle')";//低版本的使用方法
+        }
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

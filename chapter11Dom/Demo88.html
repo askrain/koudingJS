@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查找 getElementByName()</title>
+    <script>
+        window.onload=function () {
+            /*var arr = document.getElementsByName("sex");//返回的是数组
+            alert(arr.item(1).value);//women*/
+            /*var arr = document.getElementsByName("js");
+            alert(arr.item(0));//[object HTMLDivElement]  对于不含有name属性的元素标签使用该方法查找，ie存在兼容问题*/
+            //根据属性名获取属性值
+            var ele = document.getElementById("div1");
+            /*alert(ele.id);//div1
+            alert(ele.getAttribute("name"));//js
+            alert(ele.aa);//undefined
+            alert(ele.getAttribute("aa"));//哈哈 所以建议使用getAttribute()方法
+            alert(ele.className);//kil
+            alert(ele.getAttribute("class"));//kil
+            alert(ele.style.color);//aqua
+            alert(ele.getAttribute("style"));//color:aqua
+            alert(ele.onclick);//得到的是onclick函数
+            alert(ele.getAttribute("onclick"));//alert('haha')*/
+
+            //给属性节点设置值
+           /* var ele = document.getElementById("div1");
+            ele.setAttribute("style","color:red");//这个也很重要啊
+            ele.setAttribute("class","olp");*/
+
+        //   删除属性节点的属性
+            var ele = document.getElementById("div1");
+            ele.removeAttribute("style");
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="username" value="请输入用户名"><br/><br/>
+    <input type="radio" name="sex" value="man">男
+    <input type="radio" name="sex" value="women">女
+    <br/><br/>
+    <div id="div1" name="js" aa="哈哈" class="kil" style="color: aqua" onclick="alert('haha')">测试</div>
+</body>
+</html>

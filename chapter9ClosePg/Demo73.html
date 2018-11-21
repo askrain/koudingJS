@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>私有变量和静态私有变量</title>
+    <script>
+        //   私有变量
+       /* function show() {
+            var num=5;//私有变量
+           function test() {//私有函数
+               return "我是局部函数";
+           }
+           this.test=function () {
+               return num+test();
+           }
+        }
+
+        var s=new show();//这个对象具有私有的变量num，私有的方法test,公共的方法test
+        alert(s.test());//我是局部函数*/
+        /*-----------------------------------------------------*/
+
+        /*function Test() {
+            this.name = "lise";//公共属性
+            this.fun =function(){//公共函数
+                alert(this.name);
+            }
+        }
+        var t1=new Test();
+        alert(t1.name);
+        t1.fun();*/
+
+    //    使用构造函数的传参访问私有变量
+        /*function Person(value) {
+            var user=value;//私有变量  类似于java的setter getter
+            this.getUser=function () {
+                return user;
+            }
+            this.setUser=function(v){
+                user = v;
+            }
+        }
+        var person=new Person("hello");
+      alert(person.getUser());
+      person.setUser("lm");
+      alert(person.getUser())*/
+
+        //静态私有变量（所有对象共享的局部变量）country
+    //    让一个私有变量被所有对象共享
+        (function () {
+            var country="";//私有变量
+            Person =function (value) {//全局的Person类型
+                country=value;
+            }
+            Person.prototype.setCountry=function (c) {
+                country=c;
+            }
+            Person.prototype.getCountry=function () {
+                return country;
+            }
+        })();
+
+        var person = Person("usa");//两个对象共享一个全部变量country
+        alert(person.getCountry());
+        var person2 = Person("china");
+        alert(person2.getCountry());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

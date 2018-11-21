@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型模式</title>
+    <script>
+        <!--1. 原型模式-->
+/*        function Student() {
+        }
+        //原型都是对象，以下为直接给Student设置原型对象
+        Student.prototype={
+            name:"李四",
+            age:23,
+            family:["爸爸","妈妈","妹妹"],
+            fun:function () {
+                return this.name+this.age+this.family;
+            }
+        }
+
+        var stu1=new Student();
+        stu1.name="kik";
+        // alert(stu1.name);
+        stu1.family.push("哥哥");
+        alert(stu1.family);
+        var stu2=new Student();
+        alert(stu2.family);//原型中的引用类型存在了问题   这个也有哥哥
+        /!*原则是：所有对象共享的属性和方法方法原型中*!/*/
+
+        /*2. 构造函数+原型 模式*/
+        /*function Student(name,age) {//每个对象特有的数据使用构造函数
+            this.name=name;
+            this.age=age;
+            this.family=["爸爸","妈妈"]
+        }
+        Student.prototype={//所有对象共享的放在原型中
+            fun:function () {
+                return this.name+this.age+this.family;
+            }
+        }
+
+        var stu1=new Student("李四",14);
+        stu1.family.push("姐姐");
+        alert(stu1.family);
+        var stu2=new Student("wangwu",22);
+        stu2.family.push("妹妹");
+        alert(stu2.family);*/
+
+
+        /*3.  动态原型模式*/
+        function Student(name,age) {
+            this.name=name;
+            this.age=age;
+            this.family=["爸爸","妈妈"];
+            if (typeof this.fun != "function") {  //提升效率
+
+                alert("原型初始化开始");
+                Student.prototype.fun=function () {
+                    return this.name+this.age+this.family;
+                }
+                alert("原型初始化结束");
+            }
+        }
+
+        var stu1=new Student("lo",12);
+         alert(stu1.fun());
+
+        var stu2=new Student("asda",63);
+        alert(stu2.fun());
+
+    //    这样每次调用原型方法 每次都会初始化  不合理 思路判断原型方法是否被使用过
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作内联和外接样式</title>
+    <title>操作内联和链接样式</title>
+    <link rel="stylesheet" title="样式" type="text/css" href="..\css\test.css">
+    <style>
+        .cc{
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+
+
+
+
+
+     /*   //跨浏览器删除样式规则
+        function delRule(sheet,index) {
+            if (sheet.deleteRule){
+                sheet.deleteRule(index);
+            } else if (sheet.removeRule){
+                sheet.removeRule(index);
+            }
+        }
+
+        //跨浏览器添加规则
+        function addRule(sheet,selectName,styles,index) {
+
+
+            if (sheet.insertRule) {
+                sheet.insertRule(selectName+"{"+styles+"}",index);
+            }else if (sheet.addRule){
+                sheet.addRule(selectName,styles,index);
+            }
+        }
+
+        window.onload=function () {
+            var link=document.getElementsByTagName("link")[0];
+            var sheet=link.sheet;//得到样式表
+            // var rules=sheet.cssRules||sheet.rules;//跨浏览器获取样式规则
+            // alert(rules);//[object CSSRuleList]
+            // alert(sheet.deleteRule);//function deleteRule() { [native code] }
+            addRule(sheet,"body","background-color:red",0);
+            delRule(sheet,0);
+
+        }*/
+
+        //获取设置内联或者链接中的样式
+        window.onload=function () {
+            var styleSheets = document.styleSheets;//获取所有的样式表
+            var sheet=styleSheets[0];
+            // alert(sheet);//[object CSSStyleSheet]
+            var rules=sheet.rules||sheet.cssRules;
+            var rule1=rules[0];
+            alert(rule1.cssText);//#div1 { color: red; font-size: 30px; background: rgb(204, 204, 204); }
+            alert(rule1.selectorText);//  #div1
+            alert(rule1.style);//[object CSSStyleDeclaration]
+            alert(rule1.style.color);//获取对应的样式
+            rule1.style.color="black";
+            alert(rule1.style.color);//black
+        }
+
+     /**
+      * 三种操作样式的方法：
+      * 1. 使用style属性 只能操作行内样式
+      * 2. 计算后的样式，三种都可以获取，但不能设置
+      * 3. 使用sheet.cssRules\\sheet.rules获取【内联和链接】的样式
+      */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

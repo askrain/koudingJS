@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串常用方法</title>
+    <script>
+        var ss="abc0123def&#*";
+        /**
+         * 1. charAt(index) 得到字符  index<0的时候，返回空
+         * 2. charCodeAt(index) 得到索引对应字符的编码
+         * 3. String.fromCharCode()根据编码生成字符串
+         * 4. indexOf(str)  str第一次出现的位置  不存在时，返回-1
+         * 5. indexOf(str,startIndex) 从index开始第一次开始出现的位置
+         * 6. lastIndexOf(str)  str最后一次出现的位置
+         * 7.
+         */
+        /*for (var i = 0; i < ss.length; i++) {
+            document.write("下标为"+i+"的字符是： "+ss.charAt(i)+"-----------该字符的编码是： "+ss.charCodeAt(i)+"<br/>");
+        }*/
+
+        //验证邮箱是否合法
+        var email="zhann.kl@qq.com";//含有一个@符号 @在. 之前
+        //判断是否含有@
+        if (email.indexOf("@")>0){
+            //判断是否还含有一个@
+            if (email.indexOf("@") == email.lastIndexOf("@")) {
+                //判断@符号是否在第一个  .之前 且两个符合   不相邻
+                if (email.indexOf("@")+1 < email.indexOf(".",email.indexOf("@"))) {
+                    alert("邮箱合法")
+                }else {
+                    alert("邮箱不合法")
+                }
+            }else{
+                alert("含有多个@，不合法")
+            }
+        } else{
+            alert("没有@，不合法！")
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

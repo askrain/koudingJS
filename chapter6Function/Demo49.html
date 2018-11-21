@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function类型</title>
+    <script>
+        /*function test(msg) {
+            alert(msg);
+        }
+        var f=test;
+        f("sad");//等价于 test("sad)*/
+
+
+    //    this  是一个引用，总是指向函数被调用时的对象，即指向了谁调用了这个函数
+        /*var name="nj";
+        function show() {
+            // alert(name);
+            alert(this);//[object Window]
+        }
+        show();//window对象调用了这个函数 顶层对象相当于window.show()  this指向的就是window对象*/
+
+       /* var obj={
+            name:"lisi",
+            show:function () {
+                alert(this.name);
+            }
+        }
+        obj.show();//lisi  函数调用时，this指的是obj 所以this.name相当于obj.name*/
+
+
+       var color="红色";
+       function fun() {
+           alert(this.color);
+       }
+       var obj={
+           color:"蓝色",
+       };
+       fun();// 红色    当前调用函数的是window，所以this指向了window
+        obj.showColor=fun;
+        obj.showColor();//蓝色
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

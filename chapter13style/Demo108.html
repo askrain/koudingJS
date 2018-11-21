@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作内联和链接样式</title>
+    <link rel="stylesheet" title="样式" type="text/css" href="..\css\test.css">
+    <style>
+        .cc{
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        //style属性：只能获取和设置行内的样式
+    //    计算后的样式只能获取不能设置
+
+        window.onload=function () {
+            var link=document.getElementsByTagName("link")[0];
+            // alert(link);//[object HTMLLinkElement]
+
+            var style=document.getElementsByTagName("style")[0];
+            // alert(style);//[object HTMLStyleElement]
+
+            var sheet1=link.sheet;//得到样式表
+            var sheet2=style.sheet;
+           /* alert(sheet1);//[object CSSStyleSheet]
+            alert(sheet2);//[object CSSStyleSheet]*/
+
+            var sheet=link.sheet||link.styleSheet;//获取样式表的兼容写法
+            // alert(sheet.disabled);//false  样式表是否被禁用
+            // alert(sheet.href);//http://localhost:9355/koudingJS/css/test.css
+            //禁用样式  sheet.disabled=true
+            //对于ie8或者以下版本，有兼容问题
+            // alert(sheet.media.length);//0
+            // alert(sheet.ownerNode);//[object HTMLLinkElement]
+            // alert(sheet.title);//样式
+            alert(sheet.cssRules[0]);//[object CSSRuleList]  index为0的时候： [object CSSStyleRule]
+            alert(sheet.cssRules[0].cssText);//#div1 { color: red; font-size: 30px; background: rgb(204, 204, 204); }   ie8及以下版本不支持
+            sheet.deleteRule(2);//删除样式表的第二个规则
+            sheet.insertRule("body{background-color:yellow}",0);//给sheet增加规则
+            //CSSStyleRule 可以使用的属性：cssText(对应的文本)  parentRule  ParentStyleSheet（当前规则的样式表）  selectorText （获取当潜规则的选择符文本） style （返回CSSStyleDeclaration 对象  可以获取和设置样式）  type
+            // ie8及以下
+            /*sheet.rules
+            sheet.removeRule(0);
+            sheet.addRule("body","background-color:yellow",0);*/
+            /**
+             * 以下是关于样式表的属性和方法：
+             * disabled   获取和设置样式表是否被禁用
+             * href       如果是通过<link>包含,则样式表为URL，否则为null
+             * media      样式表所支持的所有媒体类型的集合
+             * ownerNode  指向拥有当前样式表节点的指针
+             * parentStyleSheet   @import导入的情况下，得到父CSS对象
+             * title    ownerNode中title的属性
+             * type     样式表类型字符串
+             * cssRules   样式表包含样式规则的集合  IE不支持
+             * ownerRules   @import导入的情况下，指向表示导入的规则  ie不支持
+             * deleteRule(index)  删除cssRules集合中指定位置的规则，IE不支持
+             * insertRule(rule,index) 向cssRules集合中指定位置插入rulr字符串  ie不支持
+             */
+        }
+    </script>
+
+</head>
+<body>
+    <div id="div1">javascript学习</div>
+</body>
+</html>

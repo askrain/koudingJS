@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+    <script>
+        <!--什么是闭包:在一个函数内部创建另一个函数,通过另一个函数访问这个函数的局部变量-->
+        /*function show() {
+            var num=10;
+            return function () {
+                return num;
+            }
+        }
+        var fun=show();
+        // alert(fun());
+        alert(show()());*/
+
+    //    使用闭包的优势是什么？例子：实现一个变量的累加
+       /* function add() {
+            var age=10;
+            age++;
+            return age;
+        }
+        alert(add());//调用函数时为局部变量开辟内存，函数调用结束时，局部变量内存立刻被释放
+        alert(add());*/
+
+       /*var num=20;//全局变量一直在内存中，直到程序运行结束
+       function add() {
+           num++;
+           return num;
+       }
+       alert(add());
+       alert(add());
+       /!*全部变量时公共的，容易发生问题*!/*/
+
+       //不适用全部变量，让age的值逐渐递增  ---使用闭包 闭包使用的局部变量不是立即释放，会在内存中驻留一段事件  占用时间会变长。所以，尽量不要使用闭包。
+        function add3() {
+            var age=15;
+            return function () {
+                age++;
+                return age;
+            }
+        }
+        var fun=add3();//指向的是内部函数
+        alert(fun());
+        alert(fun());
+        alert(fun());
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

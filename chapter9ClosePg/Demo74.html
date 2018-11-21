@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>访问私有变量和函数</title>
+    <script>
+        /*var obj={
+            name:"lis",
+            fun:function () {
+                return "sa";
+            }
+        }
+        alert(obj.name);
+        alert(obj.fun());*/
+
+        //块级作用域+字面量的方式
+        /*var objs=(function () {
+            var name="张三";
+            function show() {
+                return "我爱编程，我讨厌吵架";
+            }
+            return {
+                go:function () {
+                    return name+show();
+                }
+            }
+        })();//若左边赋值给一个变量，小括号可以省略*/
+
+
+
+       /* var objss=(function () {
+            var name="张三";
+            function show() {
+                return "我爱编程，我讨厌吵架";
+            }
+            var result= {
+                go:function () {
+                    return name+show();
+                }
+            }
+            return result;
+        })();
+        alert(objss.go())*/
+
+
+       //块级作用域+构造函数 方式访问私有变量 私有函数
+        function Test() {
+
+        }
+        var objs=function () {
+            var name="夜晚";
+            function show() {
+                return "我想睡觉";
+            }
+            var t=new Test();
+            t.go=function () {
+                return name+show();
+            }
+            return t;
+        }();
+        alert(objs.go());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

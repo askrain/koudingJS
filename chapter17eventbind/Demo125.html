@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ie8及以下版本提供的事件处理方法</title>
+    <script>
+        //现代事件绑定
+    //    w3c时间处理函数：addEventListener  removeEventListener  ie8及以下版本不支持该方法
+    //    IE事件处理函数： attachEvent()  detachEvent()  参数事件名称和函数名
+
+    //    1.覆盖问题 得到解决 ie11不支持 ie10 9支持（先 hello  后world） 8及以下（先world 后 hello）
+        /*window.attachEvent("onload",function () {
+            alert("hello");
+        });
+        window.attachEvent("onload",function () {
+            alert("world");
+        });*/
+        // 2.给相同的事件添加相同的函数 是否能屏蔽 ie11不支持 ie10 9 解决了  8及以下没有解决
+    //    3.this指向问题  事件切换为例  没有解决  this指向了window对象
+        window.event.srcElement//被点击的div对象  通过事件点击对象解决了this的问题  that替换所有的this使得所有的操作都指向该指向的对象
+    //    4.给同一函数内添加多个函数的问题也得到了解决
+
+    </script>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>

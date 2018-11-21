@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点操作</title>
+    <script>
+        /*节点操作：创建节点、复制节点、插入节点、删除节点、替换节点*/
+        /*
+        createElement()  创建一个元素节点
+        appendChild()  将新节点追加到子节点列表的末尾
+        createTextNode() 创建一个文本节点
+        insertBefore() 将新节点插入到前面
+        replaceChild()  将新节点替换旧节点
+        cloneNode()赋值节点
+        removeNode()  移除节点
+         */
+
+        //把newElement 插入到targetElement后面
+        function insertAfter(newElement,targetElement){
+            var parent =targetElement.parentNode;
+            if (parent.lastChild==targetElement){//说明targetElement是父节点的最后一个元素节点
+                parent.appendChild(newElement);
+            }
+            parent.insertBefore(newElement,targetElement.nextSibling);
+        }
+        window.onload=function () {
+            var p = document.createElement("p");
+            var pText = document.createTextNode("我是个段落");
+            p.appendChild(pText);
+            var div = document.getElementById("div1");
+            div.appendChild(p);
+            //div 前面插入标签
+            var a=document.createElement("a");
+            div.parentNode.insertBefore(a,div);//通过父节点实现在元素节点前插入节点 1.插入的节点2.在谁前面插入
+        //    div后面插入标签
+            var span=document.createElement("span");
+            div.parentNode.appendChild(span);
+            var ul=document.createElement("ul");
+            insertAfter(ul,div);
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">js学习</div>
+    <p>hello</p>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function类型</title>
+    <script>
+        //函数内部属性
+        /*1. arguments属性：指向一个类似数组但不是数组的对象 存储的是实际传递给函数的参数，而不仅限于函数声明所定义的参数列表*/
+        /*function show(a,b) {
+            if (arguments.length == 2) {
+                alert(a+b);
+            }else if (arguments.length=3){
+
+                alert(arguments[0]+"---"+arguments[1]+"----"+arguments[2])
+            }
+        }
+        show("hello",56,"shk");*/
+        /*2. length属性：函数名.length 得到的是函数定义时的参数个数*/
+        /*3.arguments中的callee属性：它代表函数对象本身的引用*/
+        //使用递归实现阶乘
+        /*function die(m) {
+            if (m==1){
+                return 1;
+            } else{
+                return die(m-1)*m;
+            }
+        }*/
+        //这样写的好处是当 函数名改变时，函数内的逻辑不需要变动  arguments.callee()相当于  当前函数名
+        /*function die2(m) {
+            if (m==1){
+                return 1;
+            } else{
+                return arguments.callee(m-1)*m;
+            }
+        }*/
+
+
+    //    局部变量  全局变量
+
+        var g=100;//全局变量  不属于任何函数  公共的，任何一个函数都可以使用
+        function fun() {
+            var a=89;//局部变量 ，只能在函数内使用
+            var g=12;//当局部变量和全局变量重名时，全局变量无效
+            alert(g);
+        }
+        fun();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式规则</title>
+    <script>
+        // . 代表任意字符 （换行除外）
+       /* var reg=/b..k/;
+        var str="books";
+        alert(reg.test(str));//true  以b开头以k结尾 中间两位任意*/
+
+       //? 出现0此或者1次 *出现0次或者多次 +出现1次或者多次
+        /*var reg=/bo*k/;//第一位是b，然后o出现零次或者多次接着出现k
+        var str="books";
+        alert(reg.test(str));*/
+
+        //{m,n} 至少出现m次  最多出现n次   ｛m,｝至少出现m次   {m}正好出现m次
+       /* var reg=/bo{2,4}k/;
+        var str="books";
+        alert(reg.test(str));*/
+
+       //[]限定某一位上字符的取值范围  [^]限定某一位上不能取的值
+
+        /*var reg=/[a-z]ook/;
+        // var reg=/[a-zA-Z0-9]ook/;
+        var str="books";
+        alert(reg.test(str));*/
+
+
+        //  \d 等价于[0-9]  \D等价于[^0-9] \w 等价于[a-zA-Z0-9_]  \W等价于[^a-zA-Z0-9_]
+        // var reg=/^book$/;  匹配行首 以book开头以book结尾
+        // \s 匹配空白字符、空格、制表符和换行符
+        //   this|where|logo  匹配其中的任意一个都可以
+        //() 分组  var reg=/(javascript){2-4}/;  javascript至少出现2次 最多出现4次
+
+        /*var reg=/(javascript){2-4}/;
+        var str="study javascriptjavascriptjavascript";
+        alert(reg.test(str));
+        alert(RegExp.$1);  //得到的是第一个javascript*/
+
+        /*var reg=/(.*)\s(.*)/;
+        var str="hello world";
+        alert(str.replace(reg, "$2 $1"));//两个单词的位置替换*/
+
+        //贪婪  + * ？{m,n} {m,} {m}  惰性  +？  *？ ？？    {m,n}？ {m,}？ {m}？
+        //贪婪 最大能够匹配到的字符串
+        //惰性
+
+        /*var reg=/6(.*)6/;
+        var str="study 6javascript6 6javascript6 6javascript6";
+        alert(str.replace(reg, '$1')); //study javascript6 6javascript6 6javascript*/
+
+
+        var reg=/6(.*?)6/;
+        var str="study 6javascript6 6javascript6 6javascript6";
+        alert(str.replace(reg, '$1')); //study javascript 6javascript6 6javascript6
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

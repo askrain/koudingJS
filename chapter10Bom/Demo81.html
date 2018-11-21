@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器检测</title>
+    <script type="text/javascript" src="../js/browserdetect.js">
+        <!--每个浏览器都有自己特有的扩展 所以在开发阶段判断浏览器非常重要-->
+    //    navigator对象  每个浏览器的navigator对象都有自己的属性和方法
+    //     alert(navigator.appName);//浏览器名称  Netscape 不能准确获取浏览器的名称
+    //     alert(navigator.userAgent);//mozilla是 浏览器名称  浏览器代理信息
+    //     alert(navigator.platform);//win32
+    //    浏览器嗅探器
+        alert(BrowserDetect.browser);//得到浏览器名称
+        alert(BrowserDetect.version);//得到浏览器版本
+        alert(BrowserDetect.OS);//系统
+
+    //    判断是否为ie6
+        if (BrowserDetect.browser=='Internet Explorer'&&BrowserDetect.version<7){
+            alert("ie6需要处理兼容性问题");
+        }
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

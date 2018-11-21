@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单的重置</title>
+    <script type="text/javascript" src="../js/base.js">
+        <!--重置表单:用户点击重置按钮,表单会被初始化-->
+        addEvent(window,"load",function () {
+           var fm=document.getElementById("myForm");
+           addEvent(fm, "reset",function (evt) {
+               var e=evt||window.event;
+               preDef(e);
+               fm.reset;
+           });
+           /*addEvent(document,"click",function () {
+               fm.reset();
+           })*/
+        });
+
+    </script>
+</head>
+<body>
+<form id="myForm">
+    姓名：<input type="text" name="user"/><br/>
+    <input id="sub" type="submit" value="提交">
+    <input id="reset" type="reset" value="重置">
+</form>
+</body>
+</html>

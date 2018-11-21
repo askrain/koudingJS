@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象和原型</title>
+    <script>
+        //ECMAScript 有两种开发模式：函数式（过程化）  2.面向对象（oop）
+
+    //    创建对象  常规方法
+        /*var stu1=new Object();
+        stu1.name="loio";
+        stu1.age=20;
+        stu1.study=function () {
+            alert("天天向上");
+        }
+        // var stu2=......工作量大  重复性代码多*/
+
+
+    //    2. 使用【工厂模式】创建对象，解决实例化对象产生大量重复的问题
+        function createObj(name, age) {
+            var obj=new Object();
+            obj.name=name;
+            obj.age=age;
+            obj.study=function () {
+                alert("我是"+this.name+"今年"+this.age+"岁");
+            }
+            return obj;
+        }
+
+        var stu4=createObj("李四",23);
+        var stu5=createObj("王五",23);
+        var stu6=createObj("joi",23);
+        stu4.study();
+        stu5.study();
+        stu6.study();
+    //    工厂模式的缺点： 不能确定对象的类型
+        alert(typeof stu4);//object
+        alert(typeof stu5);
+        alert(typeof stu6);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

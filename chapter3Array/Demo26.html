@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>递归</title>
+</head>
+<script type="text/javascript">
+    /*
+        1.工作中一般禁止使用递归
+        2.函数可以自己调用自己，称为递归调用
+        3.一般循环可以实现的，递归的也可以调用
+
+        【特点】
+        1.必须要有参数
+        2.必须要有return
+        3.短时间内内存剧增
+     */
+//    1加到n的和
+    function sum(n) {
+        if (n == 1) {
+            return 1;
+        }else{
+            return sum(n-1)+n;
+        }
+    }
+    var result = sum(10000);
+    alert(result)
+
+</script>
+<body>
+<!--通过递归打印hello world-->
+<script>
+    function print(n) {
+        if (n ==0){
+            return ;
+        }
+        document.write("hello world!<br/>")
+        return print(n-1);
+    }
+    print(10);
+</script>
+</body>
+</html>

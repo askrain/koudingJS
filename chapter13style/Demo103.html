@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>访问行内样式</title>
+    <!--样式分类：行内（在标签内直接使用style属性）、内联（使用style标签定义的样式）、链接（外联）使用link-->
+    <script>
+       /* window.onload=function () {
+            var div=document.getElementById("div1");
+            /!*alert(div.style);//[object CSSStyleDeclaration]
+            alert(div.style.color);//red
+            alert(div.style.background);//rgb(204, 204, 204)
+            alert(div.style.fontSize);//20PX*!/
+            alert(div.style.float);//right
+            alert(div.style.cssFloat);//非IE浏览器支持 right  ie9以下版本不支持
+            alert(div.style.styleFloat);//所有ie浏览器都支持  谷歌不支持（undefined）
+
+            alert(div.style.cssFloat||div.style.styleFloat);//实现浏览器的兼容
+
+
+        }*/
+
+
+    //   设置行内样式
+        /*window.onload=function () {
+            var div2=document.getElementById("div2");
+            div2.style.color="red";
+            div2.style.background="#bbb";
+            div2.style.fontSize="25px";
+            div2.style.float="left";
+            typeof div2.style.cssFloat!="undefined"?div2.style.cssFloat="left":div2.style.styleFloat="left";//解决了兼容性的问题
+        }*/
+
+       window.onload=function () {
+           var div=document.getElementById("div1");
+           var div2=document.getElementById("div2");
+           alert(div.style.cssText);//color: red; background: rgb(204, 204, 204); font-size: 20px; float: right;   这个常识点很重要
+           div2.style.setProperty("color","yellow");//修改属性值
+           div2.style.removeProperty("color");//删除属性值
+
+
+       }
+    </script>
+</head>
+<body>
+    <div id="div1" style="color:red;background:#ccc;font-size: 20px;float: right">JavaScript学习</div>
+    <div id="div2" style="background:#abc;font-size: 25px">hello world</div>
+</body>
+</html>

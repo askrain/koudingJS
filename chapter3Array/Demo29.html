@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array 数组 属于引用数据类型</title>
+    <script>
+        /*
+        * 1.数组的长度是可以改变的
+        * 2.数组中可以存储不同的数据类型
+        * */
+
+
+        /*var arr=new Array(10);//设定数组的存储长度
+        arr[0]=12;
+        arr[1]=13;
+        alert(arr[0]);*/
+
+        /*var arr1=new Array();
+        arr1[6]=77;
+        alert(arr1);*/
+
+
+
+        /*var arr2=new Array("lisi",23,"693");//创建数组的同时，初始化数组
+        alert(arr2.length);
+        arr2[3]=89;
+        alert(arr2.length);*/
+
+        /*var arr3=[12,23,"jack"];
+        alert(arr3[2]);*/
+
+        var arr4=[
+            {
+                name:"李四",
+                age:23,
+                fun:function () {
+                    alert("哈哈")
+                }
+            },
+            [1,2,3,],
+            "hello",
+            new Array(56,58,55)
+
+        ];
+        // arr4[0].fun();
+        alert(arr4[3][1])
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

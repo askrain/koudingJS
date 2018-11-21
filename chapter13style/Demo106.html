@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用id和class操作样式</title>
+    <style>
+        /*#js1{
+            color: red;
+            font-size: 30px;
+            background: aliceblue;
+        }
+        #js2{
+            color: blue;
+            font-size: 20px;
+            background: yellowgreen;
+        }*/
+        .aaa{
+            color: brown;
+        }
+        .bbb{
+            font-size: 60px;//注意属性中间用-
+        }
+        .ccc{
+            font-weight: bold;//注意属性中间用-
+        }
+    </style>
+    <script>
+        /*window.onload=function () {
+            var div=document.getElementById("js1");
+            div.id = "js2";
+            div.style.fontFamily="楷体";//实现了叠加
+            var div2=document.getElementById("js2");
+            div2.style.color="white";
+
+        //    s使用id修改样式容易发生混乱，不建议使用
+        }*/
+        window.onload=function () {
+            var div=document.getElementById("js1");
+            div.className="bbb";
+            div.className="aaa bbb ccc";//相同的样式覆盖使用 不同的样式叠加使用 比较麻烦 重复
+
+        }
+    </script>
+</head>
+<body>
+    <div id="js1" style="" class="aaa bbb ccc"> js学习</div>//可以有多个class
+</body>
+</html>

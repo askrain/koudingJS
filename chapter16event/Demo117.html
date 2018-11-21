@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象简介</title>
+    <script>
+        <!--事件三元素 对象事件=函数-->
+        /*function fun(){
+            alert(this);//因为函数和事件绑定
+        }
+        fun();//this指向window
+
+        document.onclick=fun;*/
+        /*document.onclick=function () {
+            alert(this);//[object HTMLDocument]  指被触发点击事件的对象document
+        }*/
+        /**
+         * 事件对象：当出发某个事件的时候，会产生一个对象，这个对象包含着所有与事件相关的信息。包括导致事件的元素，事件的类型，以及其他与特定事件相关的信息。事件对象，我们一般称之event对象，这个对象时浏览器通过函数把这个对象最为参数传递过来的，那么首先我们就必须验证一下，在执行函数中没有传递参数，是否可以得到隐藏的参数
+         */
+       /* document.onclick=function () {
+            alert(arguments.length);// 1 说明这个函数接收了一个参数
+            alert(arguments[0]);//[object MouseEvent]
+        }*/
+
+        /*document.onkeydown=function () {
+            alert(arguments[0]);//[object KeyboardEvent]
+        }*/
+    //    因为传递过来个事件对象，所以一般在函数调用中传入这个参数 ie8及以下版本不支持该方式获取事件对象
+    //    兼容window.event
+        document.onkeydown=function (event) {
+            // alert(event);//[object KeyboardEvent]
+            alert(event||window.event);//这个是兼容的获取事件对象的方法
+        }
+    //    普通函数没有这个事件对象
+    </script>
+</head>
+<body>
+
+</body>
+</html>

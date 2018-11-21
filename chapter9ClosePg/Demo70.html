@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包在循环中的应用</title>
+    <script>
+        /*function fun() {
+            var arr=[];
+            for (var i=0;i<3;i++){
+                arr[i]=function () {
+                    return i;
+                }
+            }
+            return arr;//数组中装了三个函数  循环结束的时候  i=3；每个函数并没有调用
+        }
+        var a=fun();
+        for (var j= 0; j < a.length;j++) {
+           alert(a[j]()) ;//3  3  3
+        }*/
+
+
+        /*function fun() {
+            var arr=[];
+            for (var i=0;i<3;i++){
+                arr[i]=(function (num) {
+                    return num;
+                })(i);//把匿名函数的调用结果值赋值给数组
+            }
+            return arr;
+        }
+        var a=fun();
+        for (var j= 0; j < a.length;j++) {
+            alert(a[j]) ;//0  1   2
+        }*/
+
+
+        function fun() {//闭包的应用
+            var arr=[];
+            for (var i=0;i<3;i++){
+                arr[i]=(function (num) {
+                    return function () {
+                        return num;
+                    };
+                })(i);
+            }
+            return arr;
+        }
+        var a=fun();
+        for (var j= 0; j < a.length;j++) {
+            alert(a[j]()) ;//0  1   2
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

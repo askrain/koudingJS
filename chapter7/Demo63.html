@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寄生构造函数：工厂模式+构造函数</title>
+    <script>
+        /*不建议使用 没有共享数据*/
+        function Student(name,age){
+            var obj=new Object();
+            obj.name = name;
+            obj.age = age;
+            obj.fun =function() {
+                return this.name +this.age;
+            }
+            return obj;
+        }
+        var stu=new Student("ksn",454);
+        alert(stu.fun());
+
+
+        /*稳妥构造函数  在实例化的时候不能使用new  内部不能使用this*/
+        function Person(name,age) {
+            var obj=new Object();
+            obj.fun =function(){
+                return name+age;
+            }
+            return obj;
+        }
+
+        var person=Person("sk",45);//不能使用new
+        alert(person.fun());
+
+        //引用类型中是可以添加属性和方法的  但不建议 容易发生命名冲突
+        alert(Array.prototype.sort);
+        alert(String.prototype.substr);
+
+
+        //给String的原型对象添加发那个发
+        String.prototype.myStr=function () {
+            return this+"是个字符串";
+        }
+        var ss="hello";
+        alert(ss.myStr());
+
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+</head>
+<body>
+<!--事件的分类：1.鼠标事件  2.键盘时间 3.HTML事件-->
+
+
+<script>
+    window.onload = function () {
+        <!--1.鼠标事件-->
+        var btn = document.getElementsByTagName("input")[0];
+        //点击事件
+        btn.onclick = function () {
+            alert("welcome");
+        };
+        //双击时事件
+        btn.ondblclick = function () {
+            alert("double click");
+        };
+        btn.onmousedown = function () {
+            alert("鼠标左键摁下");
+        }
+        btn.onmouseup = function () {
+            alert("鼠标抬起事件");
+        }
+        btn.onmouseover = function () {
+            alert("鼠标在按钮的上方");
+        }
+        btn.onmouseout = function () {
+            alert("鼠标离开的事件！");
+        }
+        btn.onmousemove = function () {
+            alert("鼠标在按钮上方移动事件！")
+        }
+        //键盘事件
+        onkeydown = function () {
+            alert("键盘被摁下任意一个键的时候");//一直摁下一直触发这个事件
+        }
+        onkeyup = function () {
+            alert("摁下键盘上的键抬起的时候");
+
+        }
+        onkeypress = function () {
+            alert("摁下字母键被触发！");
+        }
+
+    }
+    //    html事件
+    window.onload = function () {
+        // alert("全面全部加载了");
+        var input = document.getElementsByTagName("input")[1];
+        input.onselect = function () {
+            alert("文本框内的内容被选中的时候被触发");
+        }
+        input.onchange = function () {
+            alert("输入框输入内容在其他地方点击的时候触发");
+        }
+        input.onfocus = function () {
+            alert("得到焦点的时候，即鼠标在文本框闪烁的时候");
+        }
+        input.onblur = function () {
+            alert("输入框失去焦点的时候");
+        }
+        var form=document.getElementsByTagName("form")[0];
+        form.onsubmit=function () {
+            alert("表单被提交了，必须是表单！");
+        }
+        form.onreset=function () {
+            alert("表单被重置了");
+        }
+    }
+    window.onresize=function () {
+        alert("窗体大小发生变化的时候触发的事件！");
+    }
+    window.onscroll=function () {
+        alert("窗体上的滚动条滚动的时候触发的时候！")
+    }
+
+</script>
+
+</body>
+<input type="button" value="点击"><br/><br/>
+<input type="text"><br/><br/>
+<form>
+    <input type="submit" value="提交"><br/><br/>
+    <input type="reset" value="重置"><br/><br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</form>
+</html>

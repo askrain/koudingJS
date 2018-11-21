@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .red {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+    <script>
+        <!--事件绑定分两种:一种是传统的事件绑定  (内联模型和脚本)  一种是现代事件绑定 dom2级模型 现代事件绑定提供更加强大方便的功能-->
+    //    W3C事件处理函数：addEventListener()  removeEventListener() 参数：事件名 函数 冒泡或者捕获的布尔值（true表示捕获 false表示冒泡）
+
+
+    //    1.覆盖问题  得到解决  hello world
+        /*window.addEventListener("load",function () {
+            alert("hello");
+        },false);
+        window.addEventListener("load",function () {
+            alert("world");
+        },false);*/
+    //    2.同一个事件添加了相同的函数  事件被解决 一次hello    如果是用上面的方式，因为覆盖问题被解决，还是会出现两次hello
+        /*window.addEventListener("load",fun,false);
+        window.addEventListener("load",fun,false);
+        function fun() {
+            alert("hello");
+        }*/
+
+    //    3.this的指向问题  被解决  用事件切换的例子来实验  移除事件对应removeEventListener()
+
+
+    //    总结：解决了所有问题  关于冒泡与捕获 ie8及以下版本不支持捕获  ie都是支持冒泡的
+        window.addEventListener("load",function () {
+            var div=document.getElementById("div1");
+            div.addEventListener("click",function () {
+                alert("div")
+            },true);
+            document.body.addEventListener("click",function () {
+                alert("body");
+            },true);
+        },false);
+    </script>
+</head>
+<body>
+    <div id="div1" class="red"></div>
+</body>
+</html>

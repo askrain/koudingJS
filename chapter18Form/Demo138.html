@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本框的使用</title>
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script>
+        //过滤输入 让用户在文本框输入指定的字符
+        /*
+        1. 提交前限制某些字符，屏蔽掉用户输入的不合法字符
+        2. 提交之后判断字符是否合法
+         */
+        addEvent(window,"load",function () {
+           var fm = document.getElementById("myForm");
+           var textArea = fm.elements["content"];
+           addEvent(textArea,"keypress",function (evt) {
+               var charCode=getCharCode(evt);
+               // alert(charCode);  火狐的被屏蔽的charcode都为0
+           //    验证字符是否是数字字符
+           //     alert(String.fromCharCode(charCode));
+               if (!/\d/.test(String.fromCharCode(charCode))&&charCode>0) {  //不是数字的话阻止默认行为
+                   preDef(evt);  //输入的数字会存在兼容问题  即火狐的回退键、删除键和光标方向键都被屏蔽了  类似的Safari3之前的浏览器 对应的几个按键为8
+               }
+           });
+
+        });
+    </script>
+</head>
+<body>
+    <p id="pid"></p>
+    <form id="myForm">
+        姓名<input type="text" name="user" value="请输入姓名"><br/>
+        <textarea name="content">大家好！</textarea>
+    </form>
+</body>
+</html>

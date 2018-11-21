@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点层级关系存在的问题</title>
+    <script>
+        // 解决方式1  把空白文本节点忽略掉，参数接收的是所有子节点对象
+        function getNodes(nodes){
+            var arr=[];
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].nodeType=3&&/^\s+$/.test(nodes[i].nodeValue)){//正则表达式表示一个或者多个空格
+                    continue;
+                } else {
+                    arr.push(nodes[i]);
+                }
+            }
+            return arr;
+        }
+        //解决方法2：删掉空格
+        function getNodes2(nodes){
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].nodeType=3&&/^\s+$/.test(nodes[i].nodeValue)){
+                //    删除改空白文本节点，根据父节点来删除
+                    nodes[i].parentNode.removeChild(nodes[i]);
+                }
+            }
+        }
+        //解决方法2：firstChild  参数接收的是某一个元素节点对象
+        function getNodes3(nodes){
+            for (var i = 0; i < nodes.childNodes.length; i++) {
+                if (nodes.childNodes[i].nodeType=3&&/^\s+$/.test(nodes.childNodes[i].nodeValue)){
+                    //    删除改空白文本节点，根据父节点来删除
+                    nodes.childNodes[i].parentNode.removeChild(nodes.childNodes[i]);
+                }
+            }
+            return nodes;
+        }
+        window.onload=function () {
+            var obj=document.getElementById("div1");
+           /* alert(obj.childNodes.length);//7  为什么是7  ，因为把<em>左右的空白字符串当成了元素节点
+            alert(getNodes(obj.childNodes).length);
+            getNodes2(obj.childNodes);
+            alert(obj.childNodes.length);
+            alert(obj.firstChild.nodeName);*/
+           alert(getNodes3(obj).firstChild.nodeName);
+
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <em>hello</em>
+        <em>hello</em>
+        <em>hello</em>
+    </div>
+
+</body>
+</html>

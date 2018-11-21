@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查找元素节点getElementById()</title>
+    <script>
+
+       /*window.onload=function () {
+          var arr=document.getElementsByTagName("li");//根据元素节点的tagName获取元素节点
+          alert(arr);//[object HTMLCollection]
+          alert(arr.length);
+          alert(arr[1].tagName);
+          alert(arr[1].innerHTML);
+          alert(arr.item(2).innerHTML);//这个很重要
+       };*/
+       /*window.onload=function () { //得到body元素节点
+           var arr = document.getElementsByTagName("body");
+           alert(arr.item(0).innerHTML);
+       }*/
+       window.onload=function () {//获取所有元素节点
+           var arr = document.getElementsByTagName("*");
+           alert(arr);//[object HTMLCollection]
+           alert(arr.length);//11  ie9以下的版本显示的是11个
+           alert(arr.item(0).tagName);
+           alert(arr.item(10).tagName);
+           var result;
+           for (var i = 0; i < arr.length; i++) {
+               result+=arr.item(i).tagName+" ";
+           }
+           alert(result);
+       }
+    </script>
+</head>
+<body>
+<ul>
+    <li>css</li>
+    <li>h5</li>
+    <li>js</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom加强</title>
+</head>
+<script>
+   /* window.onload=function () {
+        alert(document.documentElement);//[object HTMLHtmlElement]
+        alert(document.body);//[object HTMLBodyElement]
+    }*/
+    //Text类型：用于表现文本节点类型，文本不包括HTML，或包含转移后的HTML
+    /*window.onload=function () {
+        var div=document.getElementById("div1");
+        var str1 = document.createTextNode("hello");
+        var str2 = document.createTextNode("world");
+        div.appendChild(str1);
+        div.appendChild(str2);
+        alert(div.childNodes.length);//2
+        /!*div.normalize();//文本节点的合并
+        alert(div.childNodes.length);//1
+        div.firstChild.splitText(5);//文本节点的分离
+        alert(div.childNodes.length);//1
+        alert(div.childNodes[0].nodeValue);//hello
+        alert(div.firstChild.deleteData(0,2));//最后为lloworld
+        alert(div.firstChild.insertData(0,"hah"));//hahlloworld*!/
+        // 还有的方法：firstChild.replaceData(0,2,"olo");
+       alert(div.firstChild.substringData(0,2))
+    }*/
+
+   //    comment类型：表示文档中的注释，nodeType 是8，nodeName是#comment。nodeValue是注释的内容
+   window.onload=function () {
+        /*var div = document.getElementById("div1");
+        alert(div.firstChild);//[object Comment]
+       alert(div.firstChild.nodeType);//8
+       alert(div.firstChild.nodeName);//#comment
+       alert(div.firstChild.nodeValue);//这是注释*/
+
+    //   ie8及以下版本：
+       var obj = document.getElementsByTagName("!");
+       alert(obj[1].nodeValue);
+    }
+
+//    attr表示所有的属性节点  nodeType 2 nodeName 为属性名  nodeVlue为注释的信息
+
+</script>
+<body>
+<div id="div1"><!--这是注释--></div>
+</body>
+</html>

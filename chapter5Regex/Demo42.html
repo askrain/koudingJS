@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串提供的正则表达式方法</title>
+    <script>
+        //match
+
+        /*var reg=/hello/g;
+        var str="hello world hello javascript";
+        var result = str.match(reg);//默认返回匹配的第一个字符串 返回所有添加g修饰
+        alert(result);*/
+
+        //search
+
+        /*var reg=/hello/ig;
+        var str="hello world hello javascript";
+        var result = str.search(reg);//返回值是和正则表达式匹配的第一个字符串的起始位置
+        alert(result);*/
+
+        //replace
+
+        /*var reg=/hello/ig;
+        var str="hello world hello javascript";
+        var result = str.replace(reg,"hehe");//默认只替换第一个符合正则表达式的字符串 添加g修饰替换所有符合正则表达式的字符串
+        alert(result);*/
+
+        //split
+
+        var reg=/hello/i;
+        var str="hello world hello javascript";
+        var result = str.split(reg);//, world , javascript  切割 长度3  空格 / /;
+        alert(result);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

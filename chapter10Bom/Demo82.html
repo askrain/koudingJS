@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插件 ActiveX</title>
+</head>
+<script>
+    //1.插件是一类特殊的程序，他可以扩展浏览器的功能，通过下载安装完成。比如，在线音乐、视频动画等插件。
+//   navigator对象的plugins属性，存储了浏览器已安装插件的完整列表
+
+    //不是所有的ie浏览器都支持该属性
+    /*alert(navigator.plugins);//[object PluginArray]
+    for (var i = 0; i < navigator.plugins.length; i++) {
+        document.write("插件名称： "+navigator.plugins[i].name+"<br>")
+        document.write("插件描述： "+navigator.plugins[i].description+"<br>")
+    }*/
+
+
+    //检测非ie浏览器插件是否含有某个插件
+    function hasPlugin(name) {
+        var name=name.toLowerCase();
+        for (var i = 0; i < navigator.plugins.length; i++) {
+            if (navigator.plugins[i].name.toLowerCase().indexOf(name)>-1){
+                return true;
+            }
+        }
+        return false;
+    }
+    /*var b = hasPlugin("Chrome PDF Plugin");
+    alert(b);*/
+//    2.ActiveX控件：IE浏览器提供了ActiveX控件，它是一种在web页面中嵌入对象或组件的方法
+    //由于在JS中，我们无法把所有已安装的ActiveX控件遍历出来，但我们还是可以去验证是否安装了此控件
+
+    //验证是否含有某个ActiveX控件
+    function hasIEPlugin() {
+        try {
+            new ActiveXObject('ShockwaveFlash.ShockwaveFlash');//判断是否含有ShockwaveFlash控件
+            return true;
+        }catch (e) {
+            return false;
+        }
+    }
+    // alert(hasIEPlugin());
+
+
+
+    //跨浏览器检测是否支持Flash
+    function hasPlugins() {
+    var boo=hasPlugin("flash");//返回true标明是非ie浏览器，或者ie11
+        if (!boo){
+             boo = hasIEPlugin();
+        }
+        return boo;
+    }
+    alert(hasPlugins());
+</script>
+<body>
+
+</body>
+</html>

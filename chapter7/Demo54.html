@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本包装类型Boolean类型Number类型</title>
+    <script>
+        <!--Boolean类型:-->
+    //    属性：prototype  constructor
+    //    方法：toString()  把逻辑值转化为字符串  并返回结果
+    //    valueOf()  返回Boolean对象的原始值
+    //    toLocalString()  把逻辑值转换为本地格式字符串 并返回结果
+    //    toSource() 返回该对象的源码
+
+        /*var boo=false;
+        alert(boo);
+        alert(boo.valueOf());
+        alert(boo.toLocaleString());*/
+
+
+        /*Number类型*/
+    //    MAX_VALUE MIN_VALUE   NaN非数值   NEGATIVE_INFINITY POSITIVE_INFINITY  prototype  原型，用于增加新属性和方法
+        /*alert(Number.MAX_VALUE);
+        alert(Number.MIN_VALUE);
+        alert(Number.NaN);//NaN*/
+        var num=3000.362233;
+       /* alert(num.toString());//3000.36
+        alert(num.toLocaleString());//3,000.36
+        alert(num.valueOf());//3,000.36*/
+
+        // alert(num.toFixed(2));//保留2位小数后转化为字符串  会四舍五入
+        // alert(num.toExponential(2));//小数点后2位 返回指数形式的字符串
+        alert(num.toPrecision(10));//有效位数  既可以显示为指数计数法 也可以显示为常规
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

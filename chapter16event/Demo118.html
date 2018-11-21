@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件</title>
+    <script>
+        <!--鼠标事件是web上最常用的一类事件 毕竟鼠标还是最主要的定位设备 通过事件对象可以获取到按钮信息和屏幕坐标等-->
+        //    通过事件对象获取鼠标按钮信息 通常在鼠标按钮被单击时（通常时左键）才会触发click事件，因此检测按钮的信息并不是必要的  但对于mousedown和mouseup等事件来说，则在其event对象存在一个button属性，表示按下或释放按钮
+
+        //左键0 中间1  右键2 这是w3c的标准 ie8及以下 IE有兼容的问题 142
+        document.onmousedown = function (evt) {
+            /*var event = evt || window.event;
+            alert(event.button);// 012 */
+            var num = getBtn(evt);
+            switch (num) {
+                case 0:
+                    alert("左键");
+                    break;
+                case 1:
+                    alert("中间");
+                    break;
+                case 2:
+                    alert("右键");
+                    break;
+            }
+        }
+
+        //跨浏览器获取鼠标按钮信息
+        function getBtn(evt) {
+            var e = evt || window.event;
+            if (evt) {
+                return e.button;
+            } else if (window.event) {
+                switch (e.button) {
+                    case 1:
+                        return 0;
+                    case 4:
+                        return 1;
+                    case 2:
+                        return 2;
+                }
+            }
+        }
+
+    //    使用的时候
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

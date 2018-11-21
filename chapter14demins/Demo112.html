@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素实际大小</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: forestgreen;
+            border: 10px;
+            padding: 10px;
+            overflow: scroll;
+            margin: 20px;
+            font-size: 15px;
+        }
+    </style>
+    <script>
+        <!--获取滚动内容的大小,默认的是px-->
+        window.onload=function () {
+            var div=document.getElementById("div1");
+            alert(div.scrollWidth);//200
+            alert(div.scrollHeight);//200  非ie和ie7以上版本的到的高度是定义的高度 ,以下的版本得到的是实际的有效高度
+            //1. 增加边框.没有变化
+            //2. 增加内边距：原来大小再加上内边距
+            //3. 增加滚动条 203 203 原来的大小剪去滚动条的尺寸
+            //4. 外边距  尺寸没有变化
+            //5. 内容溢出：得到的是实际的宽度、高度
+        }
+    </script>
+</head>
+<body>
+<div id="div1">JS学习撒睡觉啊；从未曾闻窗外看wkoq.wokcpwekcpweokcpowkvwock;wokcwoepkceowpkcpeowkcpoewkcpowkcw 的；文科的品位的可怕胃口为贫困单位打卡的；为勘测我开车；为ok出差当我打开</div>
+</body>
+</html>

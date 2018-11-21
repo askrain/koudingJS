@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>逻辑运算符</title>
+    <script>
+        // !   &&   ||
+
+        //判断是不是闰年  能被4整出但不能被100整除  或者可以被400整除result(()||());
+        var year=2014;
+        var result=((year%4==0&&year%100!=0)||(year&400==0));
+        alert(result?"是闰年":"不是闰年");
+
+        var a=5,b=6;
+        alert(a<1&&++b>5);  //&&左边表达式的左边为false，右边的表达式不参与计算
+        alert(b); //6
+
+        //&&   0相当于false 非0相当于true
+        alert(3&&6); //6
+        alert(0&&6);// 0
+        alert("hello"&&"world");//world
+        alert(""&&"hello");//""   空字符串相当于false，非空相当于t    </script>
+</head>
+<body>
+
+</body>
+</html>

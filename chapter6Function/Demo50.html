@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function类型</title>
+    <script>
+        <!--prototype属性 该属性有两个方法call()  apply()-->
+       /* function sum(num1,num2){
+            return num1+num2;
+        }
+        function sum1(num1,num2){
+            return sum.call(this,num1, num2);//第一个参数：指代调用sum函数的对象，后面的参数指传递给函数的实际参数
+        }
+        function sum2(num1,num2){
+            return sum.apply(this,[num1, num2]);//第一个参数指代调用当前sum的对象  第二个参数是数组
+        }
+        alert(sum1(10,12));//this 指代window
+        alert(sum2(10,12));//this 指代window*/
+
+
+        /*可以使用call() 和apply()改变调用函数的对象*/
+
+        function test() {
+            this.property="hello world";
+        }
+        test();//this指向了window
+        alert(window.property);
+        var obj1={};
+        test.call(obj1);//test()函数中的this指向了obj1  ,相当于给obj1添加了property="hello world"
+        alert(obj1.property);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

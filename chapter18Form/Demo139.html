@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复制粘贴剪贴的组合键被屏蔽了鼠标的操作没有被屏蔽</title>
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script>
+        //JavaScript提供了六组剪贴板相关的事件
+        // copy cut paste beforecopy beforecut beforepaste  前三个常用
+        //屏蔽输入法  style="ime-mode: disabled"  对谷歌浏览器不起作用  给用户的体验不好  用户可能认为键盘或者输入法出问题了
+        addEvent(window,"load",function () {
+            var fm = document.getElementById("myForm");
+            var textArea = fm.elements["content"];
+            addEvent(textArea,"keypress",function (evt) {  //注意这个有输入法的影响
+                var charCode=getCharCode(evt);
+                if (!/\d/.test(String.fromCharCode(charCode))&&charCode>0) {
+                    preDef(evt);
+                }
+            });
+            /*addEvent(textArea, "copy", function (evt) {
+                preDef(evt);
+            });
+            addEvent(textArea, "cut", function (evt) {
+                preDef(evt);
+            });
+            addEvent(textArea, "paste", function (evt) {
+                preDef(evt);
+            });*/
+
+            //提交后判断字符是否合法
+            /*addEvent(textArea,"keyup",function () {
+                //正则表达式验证字符是否合法
+                this.value=this.value.replace(/[^\d]/g,"");//不是数字的都替换为null
+            });*/
+
+        });
+    </script>
+</head>
+<body>
+    <p id="pid"></p>
+    <form id="myForm">
+        姓名<input type="text" name="user" value="请输入姓名"><br/>
+        <textarea name="content" style="ime-mode: disabled">大家好！</textarea>
+    </form>
+</body>
+</html>

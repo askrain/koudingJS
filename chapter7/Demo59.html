@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+    <script>
+        //引用类型中都有prototype  该属性指向对象
+        var obj={
+            country:"中国"
+        };
+        function Student(name, age) {
+            this.name = name;
+            this.age=age;
+            this.study=function () {
+                alert("name: "+this.name+"----age: "+this.age);
+            }
+        }
+
+        Student.prototype=obj;//prototype属性指向一个对象  即把Student的原型设置为obj对象
+        /*在每个对象内部就会生成  __proto__ 属性指向obj对象*/
+        var stu1=new Student("张三",52);
+        var stu2=new Student("李四",23);
+        alert(stu1.country==stu2.country);//true
+        alert(Student.prototype);
+        alert(stu1.__proto__);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

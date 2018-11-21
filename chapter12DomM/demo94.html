@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom类型</title>
+    <script>
+        /*DOM自身存在很多类型，在DOM类型基础课程中大部分都有所接触
+        * 比如Element类型表示的是元素节点，Text类型表示的是文本节点
+        * 类型名                     说明
+        * Node                       表示所有类型值的统一接口，ie8以下不支持
+        * Document                   表示文档类型
+        * Element                    表示元素节点类型
+        * Text                       表示文本节点类型
+        * Comment                    表示文档类型中的注释类型
+        * CDATASection               表示CDATA区域类型
+        * DocumentType               表示文档声明类型
+        * DocumentFragment           表示文档片段类型
+        * Attr                       表示属性节点类型
+        *
+        * Node类型：Node接口时DOMI级就定义了，Node定义了12个数值常量以表示每种节点的类型值
+        * Document 类型：Document类型表示文档，或者文档的根节点，而这个节点是隐藏的，没有具体的元素标签
+        *
+        * 常量名                    说明                nodeType
+        *
+        * ELEMENT_NODE              元素                   1   1
+        * ATTRIBUTE_NODE            属性                   2
+        * TEXT_NODE                 文本                   3
+        * CDATA_SECTION_NODE        CDATA                  4
+        * ENTITY_REFERENCE_NODE     实体参考               5
+        * ENTITY_NODE               实体                   6
+        * PROCESSING_INSTRUCETION_NODE 处理指令            7
+        * COMMENT_NODE              注释                   8
+        * DOCUMENT_NODE             文档根                 9
+        * DOCUMENT_TYPE_NODE        doctype                10
+        * DOCUMENT_FRAGMENT_NODE    文档片段               11
+        * NOTATION_NODE             符号                   12*/
+
+        //解决浏览器的兼容问题
+        if (typeof Node=='undefined'){
+            //自己定义Node类型
+            window.Node = {
+                ELEMENT_NODE:1,
+                TEXT_NODE:2
+            };
+        }
+        window.onload=function () {
+            var div = document.getElementById("div1");
+            alert(typeof Node);//function
+            /*if (div.nodeType==1){
+                alert("元素节点");
+            }
+            if (div.childNodes[0].nodeType==3){
+                alert("文本节点");
+            }*/
+
+            if (div.nodeType==Node.ELEMENT_NODE)
+                alert("元素节点");
+            if (div.childNodes[0].nodeType==Node.TEXT_NODE)
+                alert("文本节点");
+        }
+
+    </script>
+</head>
+<body>
+    <div id="div1">js</div>
+</body>
+</html>

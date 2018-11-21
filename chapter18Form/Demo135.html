@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单元素共有的属性 方法 事件</title>
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script>
+        //表单元素的共有属性
+        /*
+        disabled 布尔值，表示当前元素是否被禁用
+        form 指向当前元素所属表单的指针 只读
+        name 当前元素的名称
+        readOnly 布尔值 表示当前元素是否可读
+        tabIndex 表示当前元素的切换
+        type  当前元素的类型
+        value 当前元素的值
+         */
+
+        /*addEvent(window,"load",function () {
+            var fm = document.getElementById("myForm");
+            alert(fm.elements[0].value);
+            alert(fm.elements[0].name);
+            fm.elements[0].disabled=true;
+            alert(fm.elements[0].disabled);
+            alert(fm.elements[0].form);//[object HTMLFormElement]
+        //    fm.elements[0].type    text
+        //    fm.elements[1].type    radio
+        //    fm.elements[1].type='checkbox'  变成复选框 即圆变方
+
+        })*/
+
+
+        //表单元素共有的方法  focus()将焦点定位到表单元素里  blur()从元素汇总将焦点移走
+       /* addEvent(window,"load",function () {
+            var fm=document.getElementById("myForm");
+            fm.elements[0].focus();//让文本框获取焦点
+        })*/
+
+    //   表单元素共有的事件
+    //    blur失去焦点 change(对于input 和textarea元素，在改变value并失去焦点时触发  对于select元素在改变选项的时候触发)  focus获得焦点
+         addEvent(window,"load",function () {
+            var fm=document.getElementById("myForm");
+            var text=fm.elements[0];
+            addEvent(text, "focus",function () {
+               text.value="";//获得焦点时 清空
+            });
+            addEvent(text, "blur",function () {
+               text.value="失去焦点";
+            });
+            addEvent(text, "change",function () {
+               alert("文本框change") ;//先触发change事件，后触发blur事件
+            });
+        })
+    </script>
+</head>
+<body>
+    <form id="myForm">
+        姓名<input type="text" name="user" value="请输入姓名"><br/>
+        <input type="radio" name="sex" value="men"/>男<input type="radio" name="sex"/>女<br/>
+        <input id="sub" type="submit" value="提交"/>
+        <input type="reset" value="重置">
+    </form>
+</body>
+</html>

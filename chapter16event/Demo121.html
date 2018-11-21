@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象的属性和方法</title>
+</head>
+<script>
+    /*document.onclick=function (evt) {
+        var e=evt||window.event;
+        // alert(e.target);//[object HTMLHtmlElement] 当点在红色div区域的时候显示[object HTMLDivElement]   [object HTMLBodyElement]
+
+    //    ie8及以下 用e.srcElement
+        alert(getTarget(e));
+    }
+
+//    获取点击目标的兼容写法
+    function getTarget(evt) {
+        var e=evt||window.event;
+        return e.target||e.srcElement;
+    }*/
+    window.onload=function (evt) {
+        document.onclick=function () {
+            alert("document");
+        }
+        document.documentElement.onclick=function () {
+            alert("html");
+        }
+        document.body.onclick=function () {
+            alert("body");
+        }
+        document.getElementById("div").onclick=function () {
+            alert("div");
+        }
+        document.getElementsByTagName("input")[0].onclick=function (evt) {
+            var e=evt||window.event;
+            // e.stopPropagation();//默认为冒泡，取消冒泡
+            // alert("input");//ie8及以下不支持该方法
+            // evt.cancelBubble=true;//ie8及以下
+            stopBubble(e);
+            alert("input");
+        }
+    }
+
+//    跨浏览器取消冒泡
+    function stopBubble(evt) {
+        var e=evt||window.event;
+        window.event?e.cancelBubble=true:e.stopPropagation();
+    }
+</script>
+<body style="border: 1px solid blueviolet">
+<div id="div" style="width: 200px;height: 200px;background: red">
+    <input type="button" value="按钮">
+</div>
+<p>关于事件流：从内往外逐层触发  冒泡：内层---》外层  捕获：外层---》里层  所有浏览器支持冒泡 即事件捕获从内到外  </p>
+<p>如果想取消冒泡 evt.stopPropagation()  或者evt.cancelBubble=true\n如果需要每层都取消冒泡，在每一层都要取消冒泡</p>
+</body>
+</html>

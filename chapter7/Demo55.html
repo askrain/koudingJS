@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内置对象Global</title>
+    <script>
+        //内置对象：  由ECMAScript实现的。不依赖宿主环境的对象，这些对象在ECMAScript程序执行之前都已经存在了
+        /*var a=66;//Global对象的属性
+        var se=function () {
+            alert(this);
+        }//Global对象的方法*/
+        // alert(Global.a);//无效  不能直接使用
+        // Global.seal();//无效
+    //    Global（全局）对象：所有在全局作用域内定义的变量和函数，都是Global对象的属性和方法
+    //    注意：Global是ECMAScript中一个特殊的对象，不能直接使用，并且不能new运算符创建，它在js引擎被初始化时创建
+    //    Global和winndow的区别：window对象是宿主对象，也就是在一定的环境中才会生成的对象
+
+    //    Global对象的方法：1.URI编码方法  encodeURI() encodeURIComponent()2.isNaN(不是数字返回true)
+        /*alert("http://www.baidu.com?name"+encodeURI("//李四"));
+        alert("http://www.baidu.com?name"+encodeURIComponent("//李四"));*/
+    //    还原  encodeURI()  decodeURIComponent()
+
+        /*var s=encodeURI("//李四");
+        var s1 = decodeURI(s);
+        alert(s1);*/
+
+
+    //    eval()  参数接收字符串形式的js代码，解析字符串
+        eval("var a=66;");// 等价var a=66;
+        alert(a);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

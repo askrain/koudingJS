@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用id和class操作样式</title>
+    <style>
+        .aaa{
+            color: brown;
+        }
+        .bbb{
+            font-size: 60px;//注意属性中间用-
+        }
+        .ccc{
+            font-weight: bold;//注意属性中间用-
+        }
+    </style>
+
+    <script>
+        window.onload=function () {
+            var div=document.getElementById("js1");
+            // alert(typeof div.className);//string
+            addClass(div,"bbb");
+            // deleteClass(div, "aaa");
+        }
+        //判断元素包含该样式
+        function hasClass(element,cName) {
+            return !!element.className.match(new RegExp("(\\s|^)"+cName+"(\\s|$)"));//match返回值为字符串或者null  \s 表示空格
+        }
+        <!--给元素增加样式-->
+        function addClass(element,cName) {
+            if (!hasClass(element,cName)){
+                element.className+=" "+cName;//增加新样式
+            }
+
+        }
+    //    删除样式
+        function deleteClass(element,cName) {
+            if (hasClass(element,cName)){
+                element.className=element.className.replace(new RegExp("(\\s|^)"+cName+"(\\s|$)")," ");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="js1" class="aaa">JS学习</div>
+</body>
+</html>

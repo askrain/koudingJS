@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式的创建</title>
+    <script>
+        //创建方式1
+        // var reg=new RegExp("hello");//正则表达式是引用数据类型 两种创建方式：1.new 2. 字面量
+    //    i:不区分大小写  g:全局匹配  m:多行匹配
+        //创建方式2
+        // var reg1=/hello/ig;
+
+        //使用正则表达式验证的方式：1.test  2.exec
+        /*
+        var reg=new RegExp("hello","i");
+        var str="hello world";
+        var b = reg.test(str);
+        alert(b);*/
+
+        var reg=/hello/;
+        var str="hello world hello";
+        // alert(reg.test(str));
+        alert(reg.exec(str));//返回的是匹配的字符串部分  返回的是数组对象  没有匹配返回null
+    </script>
+</head>
+<body>
+
+</body>
+</html>

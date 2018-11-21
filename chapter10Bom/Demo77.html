@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>窗口的位置和大小</title>
+    <script>
+        <!--获取窗口位置和大小-->
+    //    ie/谷歌浏览器支持screenLeft screenTop
+       /* alert(window.screenLeft);//0
+        alert(window.screenTop);//0*/
+
+    /*//    火狐、谷歌浏览器支持：screenX screenY
+        alert(window.screenX);//0
+        alert(window.screenY);//0
+
+    //    以上类型typeof number */
+
+    //各个浏览器都兼容的写法
+      /*  var x=typeof screenLeft=="number"?screenLeft:screenX;
+        var y=typeof screenTop=="number"?screenTop:screenY;
+        alert(x+","+y);*/
+    //   获取窗口的大小  指的是窗口页面的高度  窗口页面宽度
+        /*alert("宽： "+innerWidth);//1366
+        alert("高："+innerHeight);//664*/
+
+        alert("宽： "+outerWidth);//1366  窗口宽度+边框高度
+        alert("高："+outerHeight);//768   窗口高度+边框高度
+
+        //ie 适配的问题：
+        document.documentElement.clientWidth;
+        document.documentElement.clientHeight;
+    //    ie 非标准模式
+        document.body.clientWidth;
+        document.body.clientHeight;
+
+    //    各种浏览器都兼容的写法：
+        var width=window.innerWidth;
+        var height=window.innerHeight;
+        if (typeof width!="number"){//说明是ie
+           if (document.compatMode=="CSS1Compat") {
+               width=document.documentElement.clientWidth;
+               height=document.documentElement.clientHeight;
+           }else {
+               width=document.body.clientWidth;
+               height=document.body.clientHeight;;
+           }
+        }
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

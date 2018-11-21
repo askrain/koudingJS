@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本包装类型特点</title>
+    <script>
+        <!--string String   number Number boolean Boolean-->
+    //    每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而能够调用一些方法来操作这些数据
+       /* var str="hello";
+        str.name="lis";
+        str.fun =function () {
+            alert(name);
+        }
+        alert(str.name);//undefined
+        str.fun();//没结果*/
+
+        /*不能给基本类型添加属性和函数方法  包装类可以*/
+
+        var strs=new String("hello");
+        strs.name="tom";
+        strs.fun =function () {
+            alert(strs.name)
+        }
+        alert(strs.name);
+        strs.fun();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

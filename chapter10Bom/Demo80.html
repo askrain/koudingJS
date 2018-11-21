@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hostory</title>
+    <script>
+        // alert(history.length);//历史记录的
+        function back() {
+            history.back();
+        }
+        function forward() {
+            history.forward();
+        }
+        function size() {
+            alert( history.length);
+        }
+    </script>
+</head>
+<body>
+<a href="Demo.html">点击</a>
+<a href="javascript:forward()">前进</a>
+<a href="javascript:size()">查看历史数</a>
+<h1>history.go(正负数字)</h1>
+
+
+
+</body>
+</html>

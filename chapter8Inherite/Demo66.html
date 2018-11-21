@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+    <script>
+        /*1. 原型式继承  2. 对象冒充 3.组合继承（常用） 4.原型式继承*/
+
+    //    原型式继承  原型链的另一种写法
+       /* function getObj(o) {  //返回原型是o的一个对象
+            function F(){}
+            F.prototype=o;
+            return new F();
+        }
+
+
+        //例子：
+        var person={
+            name:"ton",
+            family:["爸爸","妈妈"]
+        }
+
+        var obj1=getObj(person);
+        obj1.family.push("妹妹");
+        var obj2=getObj(person);
+        alert(obj2.family);//存在引用类型共享的问题*/
+
+
+       //（寄生式继承） 原型式+工厂式：封装了创建对象的过程
+        function getObj(o) {  //返回原型是o的一个对象
+            function F(){}
+            F.prototype=o;
+            return new F();
+        }
+        //寄生函数
+        function createObj(o) {
+            var obj=getObj(o);
+            //可以在此给obj添加属性方法
+            obj.arr=["html","css"];
+            return obj;
+        }
+        var person={
+            name:"ton",
+            family:["爸爸","妈妈"]
+        }
+
+        var a=createObj(person);
+        // a.family.push("大叔");
+        a.arr.push("js");
+        var b=createObj(person);
+        // alert(b.family);//存在引用类型共享的问题*/
+        alert(b.arr);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

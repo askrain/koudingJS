@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的参数及返回值</title>
+    <script>
+        function fun(num1,num2) {
+            var sum=num1+num2;
+            // alert("sum= "+sum);
+            return sum;
+        //    不要在return下面写任何语句，因为无论什么时候都不会执行return后面的语句
+        }
+        var result = fun(12,23);
+        if (result > 10) {
+            alert("heh");
+        }
+
+        //求最大值
+        function getMax(num1, num2) {
+            return num1>num2?num1:num2;
+        }
+    //    判断两个数是否相等
+        function isEqual(num1, num2) {
+            return num1===num2;
+        }
+    //    打印一个5行5列的矩形
+        function drawRect() {
+            for (var i = 0; i < 5; i++) {
+                for (var j = 0; j < 5; j++) {
+                    document.write("*");
+                }
+                document.write("<br/>")
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

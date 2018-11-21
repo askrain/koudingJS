@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>switch</title>
+</head>
+<script>
+    var s=1;
+    switch (s) {
+        case 0:alert("num=0");break;
+        case 1:alert("num=1");break;
+        case 2:alert("num=2");break;
+        case 3:alert("num=3");break;
+        default:alert("其他数字");break;
+    }
+//    实现两个数的四则运算
+    var a=12;
+    var b=4;
+    var ch="*";
+    /*注意break的使用
+    * 当遇到break或者结束的右大括号时就会停止执行
+    * 如果default后面没有break，且还有其他的判断分支，也会执行至少一个分支*/
+
+    /**
+     * case 后面可以使常量、变量、表达式（当case中为表达式的时候，switch（true））
+     */
+    switch (ch) {
+        case "+":alert(a+b);break;
+        case "-":alert(a-b);break;
+        case "*":alert(a*b);break;
+        case "/":alert(a/b);break;
+        default:alert("i don't know");break;
+    }
+</script>
+<body>
+
+</body>
+</html>
